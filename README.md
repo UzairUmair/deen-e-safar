@@ -45,8 +45,9 @@ The frontend repository root is the hosting project root. Build with npm run bui
 and publish out/. Routes remain hash based, so no application-path rewrites are
 needed. Set public environment variables before building the static export.
 
-Vercel uses the committed vercel.json: Next.js preset, npm ci, npm run build,
-and out as the output directory. Keep the project root at ./ and remove any
+Vercel uses the committed vercel.json: Next.js preset, npm ci and npm run build.
+Leave its Output Directory override disabled: the Next.js adapter reads .next
+metadata and detects output: export itself. Keep the project root at ./ and remove
 dashboard overrides that conflict with these settings. app/data contains required
 public application source and must be committed; only root /data is ignored.
 
