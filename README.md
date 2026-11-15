@@ -9,7 +9,7 @@ This repository contains the frontend at its root; it is independently installab
 
 ## Run
 
-Use Node.js 22 or 24 LTS:
+Use Node.js 24 LTS (also pinned for Vercel):
 
 ```sh
 npm ci
@@ -44,6 +44,11 @@ integrations are not implied by emulator tests.
 The frontend repository root is the hosting project root. Build with npm run build
 and publish out/. Routes remain hash based, so no application-path rewrites are
 needed. Set public environment variables before building the static export.
+
+Vercel uses the committed vercel.json: Next.js preset, npm ci, npm run build,
+and out as the output directory. Keep the project root at ./ and remove any
+dashboard overrides that conflict with these settings. app/data contains required
+public application source and must be committed; only root /data is ignored.
 
 ## Shared catalog workflow
 
