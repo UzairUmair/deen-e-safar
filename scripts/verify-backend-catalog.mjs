@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+const input = process.argv[2] || 'generated/catalog.json';
+const catalog = JSON.parse(readFileSync(input, 'utf8'));
+const lessons = readFileSync(new URL('../app/features/Learn.tsx', import.meta.url), 'utf8');
+assert.equal(catalog.sourceHash, createHash('sha256').update(lessons.replace(/\r\n/g, '\n')).digest('hex'), 'Backend catalog is stale. Regenerate it from this frontend checkout.');
+assert.equal(catalog.lessons.length, 15);
+assert.equal(catalog.ayahCounts.reduce((sum, count) => sum + count, 0), 6236);
+console.info('Backend catalog matches the current frontend learning source.');
