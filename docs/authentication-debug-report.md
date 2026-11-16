@@ -84,3 +84,15 @@ was keyed by Firebase UID, so successful authentication remounted AuthScreen
 before its in-flight operation could show the confirmed success state. Auth
 screens now retain their operation state across UID changes. Other application
 screens keep their existing UID boundary for private-data isolation.
+
+
+## Approved production activation
+
+On 16 November the user approved publication, the exact Google OAuth frontend
+origin/callback and Vercel public authDomain change. These were applied; source
+commit d585aff is on main and its production deployment is Ready. All five
+frontend-origin helper endpoints returned 200 without a redirect, and the actual
+Google chooser now uses the frontend-origin callback. The user then completed real Google sign-in: the named synced dashboard appeared,
+a reload restored the identity, and Account showed the verified email/profile
+without a sync error. This confirms successful callback handoff on the tested
+Chrome session; it does not establish Safari or real-mobile behavior.

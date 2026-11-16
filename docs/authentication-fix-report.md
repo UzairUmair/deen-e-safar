@@ -9,8 +9,7 @@ real account and synchronized its MongoDB profile. Both providers were enabled.
 Only the missing production hostname was added to Firebase, with user approval.
 
 Subsequent live Google attempts reached the actual account chooser but returned
-a blank helper page / automatic popup close. Full live Google login remains a
-deployment verification item. Its deeper browser-specific failure is unproven;
+a blank helper page / automatic popup close. That earlier deployment did not complete live Google login. Its deeper browser-specific failure is unproven;
 we do not label every popup-closed error a manual cancellation.
 
 The prepared source repair implements Firebase's official same-origin helper
@@ -89,26 +88,26 @@ Hosting/setup: vercel.json, .env.example, README.md, package.json.
 Verification: tests/components/auth.test.tsx, scripts/verify-auth.mjs,
 scripts/verify-auth-ui.mjs and the three authentication reports in docs/.
 
-## Required production activation
+## Production activation
 
-Source changes are local on codex/authentication-redesign and are not pushed
-without explicit permission. To activate the prepared same-origin flow:
+The user approved publication and the exact OAuth origin/callback and public
+Vercel authDomain changes. Source was pushed to frontend main as d585aff on
+16 November 2026. Vercel deployment H1YRowDoejxKkdTQLGCjEpm5xNNi is Ready.
 
-1. Keep the existing Firebase default domains and the approved production domain.
-2. In the existing Google OAuth web client, add JavaScript origin
-   https://deen-e-safar-six.vercel.app and redirect URI
-   https://deen-e-safar-six.vercel.app/__/auth/handler, preserving existing values.
-3. Set production NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=deen-e-safar-six.vercel.app in
-   Vercel. Other public Firebase identifiers and the API base URL stay unchanged.
-4. Publish the prepared frontend source and rebuild. Confirm the proxied helper
-   URLs return helper HTML/scripts at the frontend origin without a 302 redirect.
-5. Complete a real Google login on that deployment and verify the returned session,
-   profile and a second login. Manual real Google consent must not be confused
-   with the emulator's simulated Google identity.
+The existing Google web client now includes JavaScript origin
+https://deen-e-safar-six.vercel.app and redirect URI
+https://deen-e-safar-six.vercel.app/__/auth/handler. Existing entries were retained.
+Production NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN is deen-e-safar-six.vercel.app.
+The deployed handler, iframe, handler.js, iframe.js and experiments.js each
+returned HTTP 200 with the appropriate HTML/JavaScript content and no redirect.
+The backend health endpoint returned 200 with accounts enabled.
 
-These pending OAuth allowlist and publication changes require user approval.
-Google Cloud's initial Terms screen was reviewed/completed by the user. No Google
-client secret or Admin key belongs in the frontend, source or screenshots.
+The user completed real Google sign-in on the new production deployment. The app
+returned to the named account dashboard with synchronization enabled. Reload
+restored the same signed-in identity, and Account showed the expected display
+name and verified email without a sync error. No personal account data was edited.
+Google Cloud's initial Terms screen was completed by the user. No Google client
+secret or Admin key belongs in the frontend, source or screenshots.
 
 Official guidance: https://firebase.google.com/docs/auth/web/google-signin and
 https://firebase.google.com/docs/auth/web/redirect-best-practices.

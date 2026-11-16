@@ -59,18 +59,26 @@ were corrected. Visuals live in ignored .openai/auth/ (login/signup, EN/UR,
 | Disposable account cleanup | Account and private profile removed using backend deletion; Firebase absence confirmed |
 | Google before domain change | Reproduced unauthorized-domain error |
 | Google after approved domain change | Actual Google chooser opens; later callback blank/automatic close observed |
-| Complete live Google session | **Not yet passed**; requires same-origin hosting/OAuth settings and source deployment |
+| Complete live Google session | **Passed** on the new deployment; returned to named synchronized account dashboard |
 | Real verification/reset email receipt | Not tested; test address is reserved and has no inbox |
 
 No raw ID tokens, passwords, OAuth return codes or private keys are recorded.
 The live backend identity smoke used only the disposable audit identity. Other
 users and their saved data were not changed.
 
-## Pending activation checks
+## Production deployment verification
 
-After approval, register the exact frontend origin/callback, update the public
-authDomain, publish/rebuild and check the proxied helper endpoints. Complete one
-real Google sign-in and repeat it; verify session restoration, API sync and the
-same profile. Also check a real mobile device and Safari (responsive Chromium
-checks do not prove their OAuth/storage behavior). No source push or OAuth
-callback/origin save is claimed before explicit approval.
+Approved source d585aff was published to frontend main. Vercel deployment
+H1YRowDoejxKkdTQLGCjEpm5xNNi is Ready with the approved production authDomain.
+The exact OAuth origin/callback were saved and read back in Google Cloud.
+All five frontend-origin Firebase helper endpoints (handler, iframe, handler.js,
+iframe.js, experiments.js) returned HTTP 200 without a redirect. Backend health
+returned HTTP 200 with accounts enabled. The new auth UI is visible in production.
+
+The user completed real Google login using the frontend callback. The app returned
+to the named synchronized account dashboard. Reload preserved the session, and
+Account displayed the same name and verified email without a sync error. No
+personal account data was edited. A second fresh live Google login was not
+performed; repeated Google identity/profile reuse passed in the emulator suite.
+Real mobile-device and Safari OAuth behavior remain unverified; responsive
+Chromium checks do not establish their storage behavior.
