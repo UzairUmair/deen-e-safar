@@ -2,7 +2,7 @@
 import { useEffect, useState, useSyncExternalStore, type ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { authError, useAuth } from "../context/AuthContext";
-import { link, navigate, type Route } from "../lib/router";
+import { link, navigate } from "../lib/router";
 import { backendRequest } from "../services/account/backendClient";
 import { discardPendingChanges, getAccountState, getServerAccountState, retryAccountSync, subscribeAccount } from "../services/account/accountStore";
 import { importGuestWithConsent } from "../services/account/guestImport";
@@ -10,7 +10,10 @@ import { importGuestWithConsent } from "../services/account/guestImport";
 export function AccountGate({ children }: { children: ReactNode }) {
   const auth = useAuth(), { t } = useTranslation();
   if (auth.loading) return <div className="app-screen" role="status">{t("Loading…")}</div>;
-  if (!auth.user) return <div className="app-screen account-panel"><h1>{t("Sign in to your account")}</h1><a className="chip" href={link("/auth/login")}>{t("Sign in")}</a><a className="chip" href={link("/dashboard")}>{t("Continue as Guest")}</a></div>;
+  if (!auth.user) {
+    const destination = typeof window === "undefined" ? "/account/dashboard" : window.location.hash.slice(1) || "/account/dashboard";
+    return <div className="app-screen account-panel"><h1>{t("Sign in to your account")}</h1><a className="chip" href={link("/auth/login?next=" + encodeURIComponent(destination))}>{t("Sign in")}</a><a className="chip" href={link("/dashboard")}>{t("Continue as Guest")}</a></div>;
+  }
   return children;
 }
 
@@ -29,39 +32,7 @@ export function SyncBanner() {
   </aside>;
 }
 
-export function AuthScreen({ route }: { route: Route }) {
-  const auth = useAuth(), { t } = useTranslation();
-  const mode = route.segments[1] || "login";
-  const [email, setEmail] = useState(""), [password, setPassword] = useState(""), [name, setName] = useState("");
-  const [busy, setBusy] = useState(false), [error, setError] = useState(""), [notice, setNotice] = useState("");
-  const actionMode = route.query.get("mode") || "", code = route.query.get("oobCode") || "";
-  async function run(task: () => Promise<unknown>, redirect = false) {
-    setBusy(true); setError(""); setNotice("");
-    try { await task(); if (redirect) navigate("/account/dashboard"); }
-    catch (e) { setError(authError(e)); } finally { setBusy(false); }
-  }
-  const title = mode === "signup" ? "Create an account" : mode === "reset" ? "Reset password" : mode === "action" ? "Complete email action" : "Sign in to your account";
-  return <div className="app-screen account-panel"><h1>{t(title)}</h1>
-    {!auth.configured && <p role="status">{t("Sign-in is unavailable. Continue as Guest.")}</p>}
-    {auth.user && mode !== "action" ? <p><a href={link("/account")}>{t("Open Account")}</a></p> : <>
-      <form className="account-form" onSubmit={e => { e.preventDefault(); void run(async () => {
-        if (mode === "action") setNotice(await auth.action(actionMode, code, password));
-        else if (mode === "reset") { await auth.resetEmail(email); setNotice("If an account exists, a password reset email has been sent."); }
-        else if (mode === "signup") await auth.signup(name.trim(), email.trim(), password);
-        else await auth.login(email.trim(), password);
-      }, mode === "login" || mode === "signup"); }}>
-        {mode === "signup" && <label>{t("Name")}<input required maxLength={60} autoComplete="name" value={name} onChange={e => setName(e.target.value)} /></label>}
-        {mode !== "action" && <label>{t("Email")}<input required type="email" maxLength={254} autoComplete="email" value={email} onChange={e => setEmail(e.target.value)} /></label>}
-        {(mode !== "reset" && (mode !== "action" || actionMode === "resetPassword")) && <label>{t("Password")}<input required type="password" minLength={mode === "signup" || mode === "action" ? 8 : 1} maxLength={128} autoComplete={mode === "login" ? "current-password" : "new-password"} value={password} onChange={e => setPassword(e.target.value)} /></label>}
-        <button className="chip selected" disabled={busy || auth.loading || !auth.configured}>{t(busy ? "Please wait…" : mode === "action" ? "Confirm" : mode === "reset" ? "Send reset email" : mode === "signup" ? "Create account" : "Sign in")}</button>
-      </form>
-      {(mode === "login" || mode === "signup") && <button className="chip" disabled={busy || auth.loading || !auth.configured} onClick={() => void run(auth.google, true)}>{t("Continue with Google")}</button>}
-      <nav className="chip-row" aria-label={t("Account options")}><a href={link("/auth/login")}>{t("Sign in")}</a><a href={link("/auth/signup")}>{t("Create account")}</a><a href={link("/auth/reset")}>{t("Forgot password?")}</a></nav>
-    </>}
-    {(error || auth.error) && <p role="alert">{t(error || auth.error)}</p>}{(notice || auth.notice) && <p role="status">{t(notice || auth.notice)}</p>}
-    <p><a href={link("/dashboard")}>{t("Continue as Guest")}</a></p>
-  </div>;
-}
+export { AuthScreen } from "./AuthScreen";
 
 type Attempt = { id: string; quizId: string; score: number; total: number; createdAt: string };
 export default function Account() {

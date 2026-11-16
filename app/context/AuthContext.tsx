@@ -5,19 +5,23 @@ import { API_BASE, backendRequest, bindBackendSession } from "../services/accoun
 import { getAccountProfile, hydrateAccount, releaseGuestWrites, setAccountIdentity, subscribeAccount, type AccountProfile } from "../services/account/accountStore";
 import type { AuthDriver, AuthIdentity } from "../services/account/authTypes";
 type Context = {
-  configured: boolean; loading: boolean; syncing: boolean; user: AuthIdentity | null; profile: AccountProfile | null; error: string; notice: string;
-  login: (email: string, password: string) => Promise<void>; signup: (name: string, email: string, password: string) => Promise<void>; google: () => Promise<void>; logout: () => Promise<void>;
+  configured: boolean; loading: boolean; syncing: boolean; redirected: boolean; user: AuthIdentity | null; profile: AccountProfile | null; error: string; notice: string;
+  login: (email: string, password: string) => Promise<void>; signup: (name: string, email: string, password: string) => Promise<void>; google: (flow?: "popup" | "redirect") => Promise<void>; logout: () => Promise<void>;
   refresh: () => Promise<void>; verifyEmail: () => Promise<void>; resetEmail: (email: string) => Promise<void>; linkGoogle: () => Promise<void>;
   saveName: (name: string) => Promise<void>; deleteAccount: (password?: string) => Promise<void>; action: (mode: string, code: string, password?: string) => Promise<string>;
 };
 const unavailable = async () => { throw new Error("Sign-in is unavailable. Continue as Guest."); };
-const AuthContext = createContext<Context>({ configured: false, loading: false, syncing: false, user: null, profile: null, error: "", notice: "", login: unavailable, signup: unavailable, google: unavailable, logout: unavailable, refresh: unavailable, verifyEmail: unavailable, resetEmail: unavailable, linkGoogle: unavailable, saveName: unavailable, deleteAccount: unavailable, action: unavailable });
+const AuthContext = createContext<Context>({ configured: false, loading: false, syncing: false, redirected: false, user: null, profile: null, error: "", notice: "", login: unavailable, signup: unavailable, google: unavailable, logout: unavailable, refresh: unavailable, verifyEmail: unavailable, resetEmail: unavailable, linkGoogle: unavailable, saveName: unavailable, deleteAccount: unavailable, action: unavailable });
 export const useAuth = () => useContext(AuthContext);
 export function authError(error: unknown): string {
   const code = (error as { code?: string })?.code;
   const known: Record<string, string> = {
     "auth/invalid-credential": "Email or password is incorrect.", "auth/wrong-password": "Email or password is incorrect.", "auth/user-not-found": "Email or password is incorrect.",
-    "auth/email-already-in-use": "This email already has an account. Try signing in.", "auth/weak-password": "Use a stronger password that meets the account policy.",
+    "auth/email-already-in-use": "Could not create an account with these details. Try signing in or resetting your password.", "auth/weak-password": "Use a stronger password that meets the account policy.",
+    "auth/invalid-email": "Enter a valid email address.", "auth/user-disabled": "This account cannot sign in. Contact support or continue as Guest.",
+    "auth/password-does-not-meet-requirements": "Use a stronger password that meets the account policy.",
+    "auth/cancelled-popup-request": "Another sign-in window is already open. Finish that sign-in first.",
+    "auth/invalid-user-token": "Your session has expired. Sign in again.", "auth/user-token-expired": "Your session has expired. Sign in again.",
     "auth/account-exists-with-different-credential": "This email uses another sign-in method. Sign in with that method, then link Google from Account.",
     "auth/credential-already-in-use": "This Google account is already linked to another account.", "auth/provider-already-linked": "Google is already linked to this account.",
     "auth/popup-blocked": "Allow the sign-in popup and try again.", "auth/popup-closed-by-user": "The sign-in window was closed. Try again when ready.",
@@ -54,11 +58,13 @@ export function AuthProvider({ children, driver: supplied }: { children: ReactNo
         const sdk = supplied || await import("../lib/firebaseClient").then(m => m.createFirebaseDriver());
         if (cancelled) return;
         setDriver(sdk);
+        let redirectFailure = sdk.redirectError;
         unsubscribe = sdk.subscribe(identity => {
           const epoch = ++turn.current;
           bindBackendSession(identity?.uid || null, identity?.getToken);
           setAccountIdentity(identity?.uid || null);
-          setUser(identity); setLoading(false); setError("");
+          setUser(identity); setLoading(false); setError(redirectFailure ? authError(redirectFailure) : "");
+          redirectFailure = undefined;
           if (identity) void synchronize(identity, epoch); else setSyncing(false);
         }, failure => { setError(authError(failure)); setLoading(false); });
       } catch (failure) { if (!cancelled) { setError(authError(failure)); setLoading(false); } }
@@ -81,12 +87,20 @@ export function AuthProvider({ children, driver: supplied }: { children: ReactNo
       if (identity) { setUser(identity); bindBackendSession(identity.uid, identity.getToken); await synchronize(identity, turn.current); }
     };
     const logout = async () => {
-      turn.current++; bindBackendSession(null); setAccountIdentity(null); setUser(null); setError(""); setSyncing(false);
+      turn.current++; bindBackendSession(null); setAccountIdentity(null); setUser(null); setError(""); setNotice(""); setSyncing(false);
       await sdk().logout();
     };
-    return { configured, loading, syncing, user, profile, error, notice,
-      login: (email, password) => sdk().login(email, password), google: () => sdk().google(),
-      signup: async (name, email, password) => { const warning = await sdk().signup(name, email, password); if (warning) setNotice(warning); await refresh(); },
+    return { configured, loading, syncing, redirected: Boolean(driver?.redirected), user, profile, error, notice,
+      login: (email, password) => { setError(""); return sdk().login(email, password); }, google: flow => { setError(""); return sdk().google(flow); },
+      signup: async (name, email, password) => {
+        setNotice("");
+        // Only creation errors reject signup. A subsequent network or sync error
+        // must never imply that the already-created Firebase account was lost.
+        const warning = await sdk().signup(name, email, password);
+        if (warning) setNotice(warning);
+        try { await refresh(); }
+        catch { setNotice("Your account was created. Refresh your account to finish syncing your profile."); }
+      },
       logout, refresh, verifyEmail: () => sdk().verifyEmail(), resetEmail: email => sdk().resetEmail(email), linkGoogle: async () => { await sdk().linkGoogle(); await refresh(); },
       saveName: async name => { await backendRequest("/api/users/me", { method: "PATCH", body: { name, preferences: { displayName: name.slice(0, 60) }, expectedVersion: profile?.version, mutationId: crypto.randomUUID() } }); await sdk().setName(name); await hydrateAccount(); await refresh(); },
       deleteAccount: async password => { await sdk().reauthenticate(password); await backendRequest("/api/users/me", { method: "DELETE", body: {} }); await logout(); },

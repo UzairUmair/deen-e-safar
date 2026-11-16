@@ -21,9 +21,12 @@ try {
   await visit('/quran/112'); await page.waitForSelector('#ayah-1');
   await page.locator('#ayah-1 button[aria-label="Bookmark verse 1"]').click();
   const guest = await page.evaluate(() => localStorage.getItem('deen-v2:guest:bookmarks'));
-  await visit('/auth/signup'); await page.getByLabel('Name', { exact: true }).fill('Emulator Reader');
-  await page.getByLabel('Email', { exact: true }).fill(email); await page.getByLabel('Password', { exact: true }).fill(password);
-  await page.getByRole('button', { name: 'Create account', exact: true }).click();
+  await visit('/auth/signup'); await page.getByLabel('Full Name', { exact: true }).fill('Emulator Reader');
+  await page.getByLabel('Email Address', { exact: true }).fill(email); await page.getByLabel('Password', { exact: true }).fill(password);
+  await page.getByLabel('Confirm Password', { exact: true }).fill(password);
+  await page.getByRole('button', { name: 'Create Account', exact: true }).click();
+  await expectText('Your journey starts here');
+  await page.getByRole('link', { name: 'Continue to dashboard', exact: true }).click();
   await page.waitForURL('**/#/account/dashboard'); await synced();
   await visit('/bookmarks'); await expectText('No saved verses yet');
   await visit('/account'); await page.getByLabel('Name', { exact: true }).fill('Updated Reader'); await page.getByRole('button', { name: 'Save profile', exact: true }).click(); await expectText('Saved.');
@@ -36,13 +39,13 @@ try {
   await page.goto(BASE + '/?mode=verifyEmail&oobCode=' + encodeURIComponent(verification.oobCode));
   await page.getByRole('button', { name: 'Confirm', exact: true }).click(); await expectText('Email verified. Sign in or refresh your account.');
   await visit('/account'); await page.getByRole('button', { name: 'I have verified my email', exact: true }).click(); await expectText('Email verified');
-  await signOut(); await visit('/auth/login'); await page.getByLabel('Email', { exact: true }).fill(email); await page.getByLabel('Password', { exact: true }).fill(password); await page.getByRole('button', { name: 'Sign in', exact: true }).click(); await page.waitForURL('**/#/account/dashboard'); await synced();
+  await signOut(); await visit('/auth/login'); await page.getByLabel('Email Address', { exact: true }).fill(email); await page.getByLabel('Password', { exact: true }).fill(password); await page.getByRole('button', { name: 'Sign In', exact: true }).click(); await page.waitForURL('**/#/account/dashboard'); await synced();
   await expectText('Good afternoon, Updated Reader').catch(async () => { assert.match(await page.locator('.feature-heading').innerText(), /Updated Reader/); });
-  await signOut(); await visit('/auth/reset'); await page.getByLabel('Email', { exact: true }).fill(email); await page.getByRole('button', { name: 'Send reset email', exact: true }).click(); await expectText('If an account exists, a password reset email has been sent.');
+  await signOut(); await visit('/auth/reset'); await page.getByLabel('Email Address', { exact: true }).fill(email); await page.getByRole('button', { name: 'Send reset email', exact: true }).click(); await expectText('If an account exists, a password reset email has been sent.');
   const resetCodes = (await (await fetch(admin('oobCodes'))).json()).oobCodes;
   const reset = resetCodes.filter(code => code.email === email && code.requestType === 'PASSWORD_RESET').at(-1); assert.ok(reset);
   await page.goto(BASE + '/?mode=resetPassword&oobCode=' + encodeURIComponent(reset.oobCode)); await page.getByLabel('Password', { exact: true }).fill(password + 'New'); await page.getByRole('button', { name: 'Confirm', exact: true }).click(); await expectText('Password reset. Sign in with your new password.');
-  await visit('/auth/login'); await page.getByLabel('Email', { exact: true }).fill(email); await page.getByLabel('Password', { exact: true }).fill(password + 'New'); await page.getByRole('button', { name: 'Sign in', exact: true }).click(); await page.waitForURL('**/#/account/dashboard'); await synced();
+  await visit('/auth/login'); await page.getByLabel('Email Address', { exact: true }).fill(email); await page.getByLabel('Password', { exact: true }).fill(password + 'New'); await page.getByRole('button', { name: 'Sign In', exact: true }).click(); await page.waitForURL('**/#/account/dashboard'); await synced();
   await visit('/account'); await page.getByRole('button', { name: 'Delete account', exact: true }).click(); await page.getByLabel('Current password', { exact: true }).fill(password + 'New'); await page.getByRole('button', { name: 'Confirm permanent deletion', exact: true }).click(); await page.waitForURL('**/#/dashboard');
   await visit('/account/dashboard'); await expectText('Sign in to your account');
   await visit('/auth/login');
@@ -55,10 +58,25 @@ try {
   await popup.getByText('Add new account', { exact: true }).click();
   await popup.locator('#email-input').fill('google-reader@emulator.example.test');
   await popup.locator('#display-name-input').fill('Emulated Google Reader');
+  const firstGoogleSync = page.waitForResponse(response => response.url().endsWith('/api/auth/sync') && response.request().method() === 'POST');
   await popup.getByRole('button', { name: 'Sign in with Google.com', exact: true }).click();
   await page.waitForURL('**/#/account/dashboard'); await synced();
+  const googleProfileId = (await (await firstGoogleSync).json()).data.id;
   await visit('/account'); await expectText('google-reader@emulator.example.test'); await expectText('Email verified');
   assert.equal(await page.getByRole('button', { name: 'Link Google account', exact: true }).count(), 0);
+  await signOut(); await visit('/auth/login?next=%2Faccount');
+  // A real SDK popup-blocked error, followed by its supported redirect alternative.
+  await page.evaluate(() => { window.open = () => null; });
+  await page.getByRole('button', { name: 'Continue with Google', exact: true }).click();
+  await expectText('Allow the sign-in popup and try again.');
+  await page.getByRole('button', { name: 'Continue with Google in this tab', exact: true }).click();
+  await page.waitForURL('http://127.0.0.1:9099/**');
+  await page.getByText('Sign-in with Google.com', { exact: true }).waitFor();
+  const returningGoogleSync = page.waitForResponse(response => response.url().endsWith('/api/auth/sync') && response.request().method() === 'POST');
+  await page.getByText('google-reader@emulator.example.test', { exact: true }).click();
+  await page.waitForURL('**/#/account'); await synced();
+  assert.equal((await (await returningGoogleSync).json()).data.id, googleProfileId);
+  await page.reload(); await expectText('google-reader@emulator.example.test'); await synced();
   for (const width of [320, 768, 1280]) {
     await page.setViewportSize({ width, height: 900 });
     assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), `Account overflow at ${width}px`);
@@ -72,5 +90,5 @@ try {
   await page.setViewportSize({ width: 1280, height: 900 });
   await signOut();
   assert.deepEqual(errors, []);
-  console.info('PASS: real local Firebase SDK signup/login and simulated Google popup, Admin verification, profile persistence, guest import/idempotency/isolation, email verification, password reset, protected routes, logout, recent-auth deletion and responsive English/Urdu Account UI; temporary MongoDB. No live credentials used.');
+  console.info('PASS: real local Firebase SDK signup/login, Google popup + blocked-popup redirect recovery + returning Google identity/profile reuse + restored session, Admin verification, profile persistence, guest import/idempotency/isolation, email verification, password reset, protected routes, logout, recent-auth deletion and responsive English/Urdu Account UI; temporary MongoDB. Google identity is simulated by the Auth emulator. No live credentials used.');
 } catch (error) { console.error('Visible error:', await page.locator('[role=alert]').allTextContents()); await page.screenshot({ path: '.openai/backend-auth-failure.png', fullPage: true }); throw error; } finally { await context.close(); await browser.close(); }

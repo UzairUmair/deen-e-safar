@@ -51,6 +51,19 @@ metadata and detects output: export itself. Keep the project root at ./ and remo
 dashboard overrides that conflict with these settings. app/data contains required
 public application source and must be committed; only root /data is ignored.
 
+## Authentication
+
+Authentication diagnosis, implementation and exact test boundaries are in
+[authentication-debug-report](docs/authentication-debug-report.md),
+[authentication-fix-report](docs/authentication-fix-report.md) and
+[authentication-test-results](docs/authentication-test-results.md).
+The local demo Auth emulator supports `npm run verify:auth` and
+`npm run verify:auth-ui`. On Vercel, Google popup/redirect recovery uses the
+committed `/__/auth/` reverse proxy. Register the frontend origin and its
+`/__/auth/handler` URI in the existing Google OAuth client, authorize the hostname
+in Firebase, and set NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN to that hostname before
+building. Proxying requires a transparent rewrite, not a redirect.
+
 ## Shared catalog workflow
 
 The API uses a generated catalog for lesson IDs, quiz keys and Quran bounds.

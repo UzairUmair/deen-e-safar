@@ -272,7 +272,7 @@ function Shell() {
 
           <main id="main" tabIndex={-1} className={isHome ? "home-main" : "inner-main"}>
             <SyncBanner />
-            <motion.div key={screenKey + ":" + (auth.user?.uid || "guest")} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.22, ease: [0.22, 0.61, 0.36, 1] }}>
+            <motion.div key={screenKey + ":" + (route.name === "auth" ? "auth" : auth.user?.uid || "guest")} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.22, ease: [0.22, 0.61, 0.36, 1] }}>
               <Suspense
                 fallback={
                   <div className="app-screen" role="status">
@@ -334,14 +334,14 @@ function Shell() {
             </div>
           </footer>
 
-          <nav className="bottom-nav" aria-label={t("Mobile navigation")}>
+          {route.name !== "auth" && <nav className="bottom-nav" aria-label={t("Mobile navigation")}>
             {NAV.filter((item) => BOTTOM_NAV.includes(item.id)).map((item) => (
               <a href={link(item.to)} className={isActive(route, item.id) ? "active" : ""} aria-current={isActive(route, item.id) ? "page" : undefined} key={item.id}>
                 <item.icon size={21} strokeWidth={1.65} aria-hidden="true" />
                 <span>{t(BOTTOM_LABELS[item.id])}</span>
               </a>
             ))}
-          </nav>
+          </nav>}
 
           {toast && (
             <div className="toast" role="status">
@@ -364,7 +364,7 @@ const MODAL_TEXT: Record<string, string> = {
   sources:
     "Quran reader: Al Quran Cloud (Uthmani Arabic text; English by Saheeh International; Urdu by Fateh Muhammad Jalandhry) with recitation audio from the Islamic Network CDN. Prayer times: AlAdhan API. Duas: Quran verses from QuranEnc.com (English by Noor International Center; Urdu by Muhammad Ibrahim Junagarhi). Hadith: HadeethEnc.com, with source attribution and grading. Each content screen links its sources.",
   privacy:
-    "Bookmarks, reading position, notes, and settings stay in this browser; export or clear them from Preferences. Quran text and audio are requested from alquran.cloud and islamic.network, and prayer times from aladhan.com, which receives the coordinates you choose. Fonts load from Google Fonts. There is no account server and no generative AI connection.",
+    "Guest bookmarks, reading positions, notes and settings stay in this browser. Signing in uses Firebase Authentication; account profiles and synced progress are stored by our backend. Guest data is imported only with your consent. AI requests use Groq when available; saved conversation history is optional. You can delete your account from Account. Public Quran, audio and prayer providers receive requests, including the location you choose for prayer times. Fonts load from Google Fonts.",
   terms: "This is an educational reading and study tool. Translations explain meanings. Consult qualified scholarship for personal religious rulings. Calculated prayer times are not mosque congregation times.",
   contact: "Contact channels are not configured. No messages or personal details are submitted.",
 };

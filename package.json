@@ -17,6 +17,7 @@
     "lint": "eslint .",
     "check:secrets": "node scripts/check-secrets.mjs",
     "verify:auth": "node scripts/verify-auth.mjs",
+    "verify:auth-ui": "node scripts/verify-auth-ui.mjs",
     "catalog:sync": "node scripts/sync-backend-catalog.mjs",
     "verify:motion": "node scripts/verify-motion.mjs",
     "measure:motion": "node scripts/measure-motion.mjs",

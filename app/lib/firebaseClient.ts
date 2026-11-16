@@ -1,5 +1,5 @@
 import { getApp, getApps, initializeApp } from "firebase/app";
-import { applyActionCode, browserLocalPersistence, confirmPasswordReset, connectAuthEmulator, createUserWithEmailAndPassword, EmailAuthProvider, getAuth, GoogleAuthProvider, inMemoryPersistence, linkWithPopup, onAuthStateChanged, reauthenticateWithCredential, reauthenticateWithPopup, sendEmailVerification, sendPasswordResetEmail, setPersistence, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile, verifyPasswordResetCode, type User } from "firebase/auth";
+import { applyActionCode, browserLocalPersistence, confirmPasswordReset, connectAuthEmulator, createUserWithEmailAndPassword, EmailAuthProvider, getAuth, getRedirectResult, GoogleAuthProvider, inMemoryPersistence, linkWithPopup, onAuthStateChanged, reauthenticateWithCredential, reauthenticateWithPopup, sendEmailVerification, sendPasswordResetEmail, setPersistence, signInWithEmailAndPassword, signInWithPopup, signInWithRedirect, signOut, updateProfile, verifyPasswordResetCode, type User } from "firebase/auth";
 import { firebaseWebConfig, firebaseConfigured, firebaseEmulatorUrl } from "./firebaseConfig";
 import type { AuthDriver, AuthIdentity } from "../services/account/authTypes";
 let driver: Promise<AuthDriver> | null = null;
@@ -7,7 +7,7 @@ const wrap = (user: User | null): AuthIdentity | null => user ? ({ uid: user.uid
 export function createFirebaseDriver(): Promise<AuthDriver> {
   driver ??= (async () => {
     if (!firebaseConfigured) throw new Error("Sign-in is not configured.");
-    const app = getApps().length ? getApp() : initializeApp(firebaseWebConfig);
+    const app = getApps().some(app => app.name === "[DEFAULT]") ? getApp() : initializeApp(firebaseWebConfig);
     const auth = getAuth(app);
     if (firebaseEmulatorUrl) {
       const url = new URL(firebaseEmulatorUrl);
@@ -15,8 +15,12 @@ export function createFirebaseDriver(): Promise<AuthDriver> {
       connectAuthEmulator(auth, firebaseEmulatorUrl, { disableWarnings: true });
     }
     try { await setPersistence(auth, browserLocalPersistence); } catch { await setPersistence(auth, inMemoryPersistence); }
+    let redirected = false, redirectError: unknown;
+    try { redirected = Boolean(await getRedirectResult(auth)); }
+    catch (error) { redirectError = error; }
     const current = () => { if (!auth.currentUser) throw new Error("Sign in to continue."); return auth.currentUser; };
     return {
+      redirected, redirectError,
       subscribe: (callback, error) => onAuthStateChanged(auth, user => callback(wrap(user)), error),
       login: async (email, password) => { await signInWithEmailAndPassword(auth, email, password); },
       signup: async (name, email, password) => {
@@ -26,7 +30,10 @@ export function createFirebaseDriver(): Promise<AuthDriver> {
         try { await sendEmailVerification(result.user); } catch { warning = "Account created. Send a verification email from Account."; }
         return warning;
       },
-      google: async () => { await signInWithPopup(auth, new GoogleAuthProvider()); },
+      google: async (flow = "popup") => {
+        if (flow === "redirect") await signInWithRedirect(auth, new GoogleAuthProvider());
+        else await signInWithPopup(auth, new GoogleAuthProvider());
+      },
       logout: () => signOut(auth),
       verifyEmail: () => sendEmailVerification(current()),
       resetEmail: async email => { try { await sendPasswordResetEmail(auth, email); } catch (e) { if ((e as { code?: string }).code !== "auth/user-not-found") throw e; } },
@@ -51,6 +58,6 @@ export function createFirebaseDriver(): Promise<AuthDriver> {
         throw new Error("This action link is invalid or expired.");
       },
     };
-  })();
+  })().catch(error => { driver = null; throw error; });
   return driver;
 }
