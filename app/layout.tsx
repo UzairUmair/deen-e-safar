@@ -6,6 +6,8 @@ import "./styles/animations.css";
 import "./styles/homepage.css";
 import "./styles/app-screens.css";
 import "./styles/auth.css";
+import "./styles/academy.css";
+import "./styles/account-center.css";
 export const metadata = {
   title: "Deen e Safar — A Beautiful Journey",
   description: "A peaceful space to explore, learn, and grow in faith.",

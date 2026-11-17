@@ -27,7 +27,7 @@ export async function backendRequest<T>(path: string, options: { method?: string
   const controller = new AbortController();
   const abort = () => controller.abort();
   for (const signal of signals) { if (signal.aborted) controller.abort(); else signal.addEventListener("abort", abort, { once: true }); }
-  const timeout = setTimeout(abort, path === "/api/ai/chat" ? 25000 : 12000);
+  const timeout = setTimeout(abort, (path === "/api/ai/chat" || path.endsWith("/explain")) ? 25000 : 12000);
   try {
     for (let attempt = 0; attempt < 2; attempt++) {
       const token = options.public ? null : await owner!.token(attempt === 1);

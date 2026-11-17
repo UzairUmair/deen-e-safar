@@ -2800,7 +2800,7 @@
     "تنسيق الساعة"
   ],
   "Comfortable": [
-    "آرام دہ",
+    "مناسب",
     "مريح"
   ],
   "Compact": [
@@ -4315,64 +4315,532 @@
     "شامل شدہ متن میں براہِ راست تلاش کریں۔ یہ نتائج ماخذ کی عبارتیں ہیں، تیار کردہ جوابات نہیں۔",
     "ابحث مباشرة في النصوص المرفقة. هذه النتائج مقاطع من المصادر وليست إجابات مولدة."
   ],
-  "Welcome Back": ["خوش آمدید", "مرحبًا بعودتك"],
-  "Begin Your Journey": ["اپنا سفر شروع کریں", "ابدأ رحلتك"],
-  "Continue your journey of faith and knowledge.": ["ایمان اور علم کا اپنا سفر جاری رکھیں۔", "تابع رحلتك في الإيمان والمعرفة."],
-  "Create your account and start exploring Deen e Safar.": ["اپنا اکاؤنٹ بنائیں اور دینِ سفر کو دریافت کریں۔", "أنشئ حسابك وابدأ استكشاف دين سفر."],
-  "Find Your Way Back": ["واپسی کا راستہ", "طريقك للعودة"],
-  "A fresh start is only an email away.": ["ایک نئی شروعات، صرف ایک ای میل کی دوری پر۔", "بداية جديدة على بُعد رسالة واحدة."],
-  "Complete this step to continue your journey.": ["اپنا سفر جاری رکھنے کے لیے یہ مرحلہ مکمل کریں۔", "أكمل هذه الخطوة لمتابعة رحلتك."],
-  "Full Name": ["پورا نام", "الاسم الكامل"],
-  "Email Address": ["ای میل ایڈریس", "البريد الإلكتروني"],
-  "Confirm Password": ["پاس ورڈ کی تصدیق", "تأكيد كلمة المرور"],
-  "Your full name": ["آپ کا پورا نام", "اسمك الكامل"],
-  "Create a password": ["پاس ورڈ بنائیں", "أنشئ كلمة مرور"],
-  "Enter your password": ["اپنا پاس ورڈ درج کریں", "أدخل كلمة المرور"],
-  "Re-enter your password": ["پاس ورڈ دوبارہ درج کریں", "أعد إدخال كلمة المرور"],
-  "Forgot Password?": ["پاس ورڈ بھول گئے؟", "نسيت كلمة المرور؟"],
-  "Show password": ["پاس ورڈ دکھائیں", "إظهار كلمة المرور"],
-  "Hide password": ["پاس ورڈ چھپائیں", "إخفاء كلمة المرور"],
-  "Show confirmation password": ["تصدیقی پاس ورڈ دکھائیں", "إظهار كلمة مرور التأكيد"],
-  "Hide confirmation password": ["تصدیقی پاس ورڈ چھپائیں", "إخفاء كلمة مرور التأكيد"],
-  "At least 8 characters. Use a mix of letters, numbers and symbols.": ["کم از کم ۸ حروف۔ حروف، اعداد اور علامات کا امتزاج استعمال کریں۔", "ثمانية أحرف على الأقل. استخدم مزيجًا من الحروف والأرقام والرموز."],
-  "Enter your full name.": ["اپنا پورا نام درج کریں۔", "أدخل اسمك الكامل."],
-  "Enter a valid email address.": ["درست ای میل ایڈریس درج کریں۔", "أدخل بريدًا إلكترونيًا صحيحًا."],
-  "Enter your password.": ["اپنا پاس ورڈ درج کریں۔", "أدخل كلمة المرور."],
-  "Use at least 8 characters.": ["کم از کم ۸ حروف استعمال کریں۔", "استخدم ثمانية أحرف على الأقل."],
-  "Passwords do not match.": ["پاس ورڈ ایک جیسے نہیں ہیں۔", "كلمتا المرور غير متطابقتين."],
-  "Sign In": ["سائن اِن کریں", "تسجيل الدخول"],
-  "Create Account": ["اکاؤنٹ بنائیں", "إنشاء حساب"],
-  "or continue with": ["یا اس کے ساتھ جاری رکھیں", "أو تابع باستخدام"],
-  "Already have an account?": ["پہلے سے اکاؤنٹ ہے؟", "لديك حساب بالفعل؟"],
-  "New to Deen e Safar?": ["دینِ سفر میں نئے ہیں؟", "جديد على دين سفر؟"],
-  "Back to Sign In": ["سائن اِن پر واپس جائیں", "العودة إلى تسجيل الدخول"],
-  "Just looking around?": ["صرف دیکھنا چاہتے ہیں؟", "تود الاستكشاف فقط؟"],
-  "Your journey, at your own pace.": ["آپ کا سفر، آپ کی اپنی رفتار سے۔", "رحلتك، على وتيرتك."],
-  "Your bookmarks and progress, together in one place.": ["آپ کے بُک مارکس اور پیش رفت، ایک ہی جگہ پر۔", "علاماتك المرجعية وتقدمك، في مكان واحد."],
-  "A space for reflection": ["غور و فکر کی جگہ", "مساحة للتأمل"],
-  "Every journey begins with a step.": ["ہر سفر ایک قدم سے شروع ہوتا ہے۔", "كل رحلة تبدأ بخطوة."],
-  "A little knowledge. A moment of reflection. A little closer, every day.": ["تھوڑا علم۔ ایک لمحۂ فکر۔ ہر روز، کچھ اور قریب۔", "قليل من المعرفة. لحظة تأمل. أقرب قليلًا، كل يوم."],
-  "A space for curious hearts.": ["متجسس دلوں کے لیے ایک جگہ۔", "مساحة للقلوب المتطلعة."],
-  "YOUR NEXT CHAPTER": ["آپ کا اگلا باب", "فصلك القادم"],
-  "YOUR JOURNEY CONTINUES": ["آپ کا سفر جاری ہے", "رحلتك مستمرة"],
-  "A LITTLE CLOSER, EVERY DAY": ["ہر روز، کچھ اور قریب", "أقرب قليلًا، كل يوم"],
-  "Deen e Safar home": ["دینِ سفر کا مرکزی صفحہ", "الصفحة الرئيسية لدين سفر"],
-  "Restoring your session…": ["آپ کا سیشن بحال ہو رہا ہے…", "جارٍ استعادة جلستك…"],
-  "Check your inbox": ["اپنا اِن باکس دیکھیں", "تحقق من بريدك الوارد"],
-  "Your journey starts here": ["آپ کا سفر یہاں سے شروع ہوتا ہے", "رحلتك تبدأ هنا"],
-  "Your account has been created. Check your inbox for a verification email, then continue exploring.": ["آپ کا اکاؤنٹ بن گیا ہے۔ تصدیقی ای میل کے لیے اپنا اِن باکس دیکھیں، پھر دریافت جاری رکھیں۔", "تم إنشاء حسابك. تحقق من بريدك الوارد للحصول على رسالة التحقق، ثم تابع الاستكشاف."],
-  "If the email has not arrived, you can resend it from Account.": ["ای میل نہ ملے تو اکاؤنٹ کے صفحے سے دوبارہ بھیج سکتے ہیں۔", "إذا لم تصلك الرسالة، يمكنك إعادة إرسالها من الحساب."],
-  "Continue to dashboard": ["ڈیش بورڈ پر جائیں", "المتابعة إلى لوحة التحكم"],
-  "You’re signed in": ["آپ سائن اِن ہیں", "تم تسجيل دخولك"],
-  "Your next chapter is waiting.": ["آپ کا اگلا باب آپ کا منتظر ہے۔", "فصلك القادم بانتظارك."],
-  "All set": ["سب تیار ہے", "كل شيء جاهز"],
-  "Your account was created. Refresh your account to finish syncing your profile.": ["آپ کا اکاؤنٹ بن گیا ہے۔ پروفائل کی ہم وقت سازی مکمل کرنے کے لیے اکاؤنٹ ریفریش کریں۔", "تم إنشاء حسابك. حدّث الحساب لإكمال مزامنة ملفك الشخصي."],
-  "You’re signed in. Profile sync is temporarily unavailable. Retry from Account.": ["آپ سائن اِن ہیں۔ پروفائل کی ہم وقت سازی عارضی طور پر دستیاب نہیں۔ اکاؤنٹ سے دوبارہ کوشش کریں۔", "أنت مسجل الدخول. مزامنة الملف الشخصي غير متاحة مؤقتًا. أعد المحاولة من الحساب."],
-  "This account cannot sign in. Contact support or continue as Guest.": ["یہ اکاؤنٹ سائن اِن نہیں کر سکتا۔ معاونت سے رابطہ کریں یا مہمان کے طور پر جاری رکھیں۔", "لا يمكن لهذا الحساب تسجيل الدخول. تواصل مع الدعم أو تابع كضيف."],
-  "Another sign-in window is already open. Finish that sign-in first.": ["سائن اِن کی ایک اور ونڈو کھلی ہوئی ہے۔ پہلے وہاں سائن اِن مکمل کریں۔", "نافذة تسجيل دخول أخرى مفتوحة. أكمل تسجيل الدخول فيها أولًا."],
-  "Your session has expired. Sign in again.": ["آپ کا سیشن ختم ہو گیا ہے۔ دوبارہ سائن اِن کریں۔", "انتهت جلستك. سجل الدخول مرة أخرى."],
-  "Could not create an account with these details. Try signing in or resetting your password.": ["ان معلومات سے اکاؤنٹ نہیں بن سکا۔ سائن اِن کرنے یا پاس ورڈ ری سیٹ کرنے کی کوشش کریں۔", "تعذر إنشاء حساب بهذه البيانات. حاول تسجيل الدخول أو إعادة تعيين كلمة المرور."],
-  "If your browser interrupted the popup, you can sign in without a popup.": ["اگر براؤزر نے پاپ اَپ روک دیا ہو تو آپ اسی ٹیب میں سائن اِن کر سکتے ہیں۔", "إذا قاطع المتصفح النافذة المنبثقة، يمكنك تسجيل الدخول في علامة التبويب نفسها."],
-  "Continue with Google in this tab": ["اسی ٹیب میں گوگل کے ساتھ جاری رکھیں", "المتابعة باستخدام Google في علامة التبويب هذه"],
-  "Guest bookmarks, reading positions, notes and settings stay in this browser. Signing in uses Firebase Authentication; account profiles and synced progress are stored by our backend. Guest data is imported only with your consent. AI requests use Groq when available; saved conversation history is optional. You can delete your account from Account. Public Quran, audio and prayer providers receive requests, including the location you choose for prayer times. Fonts load from Google Fonts.": ["مہمان کے بُک مارکس، مطالعے کی جگہ، نوٹس اور ترتیبات اسی براؤزر میں رہتے ہیں۔ سائن اِن کے لیے Firebase Authentication استعمال ہوتا ہے؛ اکاؤنٹ کے پروفائل اور ہم وقت پیش رفت ہمارے بیک اینڈ پر محفوظ ہوتے ہیں۔ مہمان کا ڈیٹا صرف آپ کی اجازت سے درآمد ہوتا ہے۔ دستیابی کی صورت میں AI کی درخواستیں Groq کو بھیجی جاتی ہیں؛ گفتگو کی تاریخ محفوظ کرنا اختیاری ہے۔ اکاؤنٹ کے صفحے سے اپنا اکاؤنٹ حذف کر سکتے ہیں۔ قرآن، آڈیو اور نماز کے عوامی فراہم کنندگان کو درخواستیں موصول ہوتی ہیں، جن میں نماز کے اوقات کے لیے آپ کا منتخب مقام شامل ہے۔ فونٹس Google Fonts سے آتے ہیں۔", "تبقى علامات الضيف ومواضع القراءة والملاحظات والإعدادات في هذا المتصفح. يستخدم تسجيل الدخول Firebase Authentication؛ وتُحفظ ملفات الحساب والتقدم المتزامن في خادمنا. لا تُستورد بيانات الضيف إلا بموافقتك. تستخدم طلبات الذكاء الاصطناعي Groq عند توفره؛ وحفظ سجل المحادثات اختياري. يمكنك حذف حسابك من صفحة الحساب. يتلقى مزودو القرآن والصوت وأوقات الصلاة طلبات، بما فيها الموقع الذي تختاره لحساب أوقات الصلاة. تُحمّل الخطوط من Google Fonts."]
+  "Welcome Back": [
+    "خوش آمدید",
+    "مرحبًا بعودتك"
+  ],
+  "Begin Your Journey": [
+    "اپنا سفر شروع کریں",
+    "ابدأ رحلتك"
+  ],
+  "Continue your journey of faith and knowledge.": [
+    "ایمان اور علم کا اپنا سفر جاری رکھیں۔",
+    "تابع رحلتك في الإيمان والمعرفة."
+  ],
+  "Create your account and start exploring Deen e Safar.": [
+    "اپنا اکاؤنٹ بنائیں اور دینِ سفر کو دریافت کریں۔",
+    "أنشئ حسابك وابدأ استكشاف دين سفر."
+  ],
+  "Find Your Way Back": [
+    "واپسی کا راستہ",
+    "طريقك للعودة"
+  ],
+  "A fresh start is only an email away.": [
+    "ایک نئی شروعات، صرف ایک ای میل کی دوری پر۔",
+    "بداية جديدة على بُعد رسالة واحدة."
+  ],
+  "Complete this step to continue your journey.": [
+    "اپنا سفر جاری رکھنے کے لیے یہ مرحلہ مکمل کریں۔",
+    "أكمل هذه الخطوة لمتابعة رحلتك."
+  ],
+  "Full Name": [
+    "پورا نام",
+    "الاسم الكامل"
+  ],
+  "Email Address": [
+    "ای میل ایڈریس",
+    "البريد الإلكتروني"
+  ],
+  "Confirm Password": [
+    "پاس ورڈ کی تصدیق",
+    "تأكيد كلمة المرور"
+  ],
+  "Your full name": [
+    "آپ کا پورا نام",
+    "اسمك الكامل"
+  ],
+  "Create a password": [
+    "پاس ورڈ بنائیں",
+    "أنشئ كلمة مرور"
+  ],
+  "Enter your password": [
+    "اپنا پاس ورڈ درج کریں",
+    "أدخل كلمة المرور"
+  ],
+  "Re-enter your password": [
+    "پاس ورڈ دوبارہ درج کریں",
+    "أعد إدخال كلمة المرور"
+  ],
+  "Forgot Password?": [
+    "پاس ورڈ بھول گئے؟",
+    "نسيت كلمة المرور؟"
+  ],
+  "Show password": [
+    "پاس ورڈ دکھائیں",
+    "إظهار كلمة المرور"
+  ],
+  "Hide password": [
+    "پاس ورڈ چھپائیں",
+    "إخفاء كلمة المرور"
+  ],
+  "Show confirmation password": [
+    "تصدیقی پاس ورڈ دکھائیں",
+    "إظهار كلمة مرور التأكيد"
+  ],
+  "Hide confirmation password": [
+    "تصدیقی پاس ورڈ چھپائیں",
+    "إخفاء كلمة مرور التأكيد"
+  ],
+  "At least 8 characters. Use a mix of letters, numbers and symbols.": [
+    "کم از کم ۸ حروف۔ حروف، اعداد اور علامات کا امتزاج استعمال کریں۔",
+    "ثمانية أحرف على الأقل. استخدم مزيجًا من الحروف والأرقام والرموز."
+  ],
+  "Enter your full name.": [
+    "اپنا پورا نام درج کریں۔",
+    "أدخل اسمك الكامل."
+  ],
+  "Enter a valid email address.": [
+    "درست ای میل ایڈریس درج کریں۔",
+    "أدخل بريدًا إلكترونيًا صحيحًا."
+  ],
+  "Enter your password.": [
+    "اپنا پاس ورڈ درج کریں۔",
+    "أدخل كلمة المرور."
+  ],
+  "Use at least 8 characters.": [
+    "کم از کم ۸ حروف استعمال کریں۔",
+    "استخدم ثمانية أحرف على الأقل."
+  ],
+  "Passwords do not match.": [
+    "پاس ورڈ ایک جیسے نہیں ہیں۔",
+    "كلمتا المرور غير متطابقتين."
+  ],
+  "Sign In": [
+    "سائن اِن کریں",
+    "تسجيل الدخول"
+  ],
+  "Create Account": [
+    "اکاؤنٹ بنائیں",
+    "إنشاء حساب"
+  ],
+  "or continue with": [
+    "یا اس کے ساتھ جاری رکھیں",
+    "أو تابع باستخدام"
+  ],
+  "Already have an account?": [
+    "پہلے سے اکاؤنٹ ہے؟",
+    "لديك حساب بالفعل؟"
+  ],
+  "New to Deen e Safar?": [
+    "دینِ سفر میں نئے ہیں؟",
+    "جديد على دين سفر؟"
+  ],
+  "Back to Sign In": [
+    "سائن اِن پر واپس جائیں",
+    "العودة إلى تسجيل الدخول"
+  ],
+  "Just looking around?": [
+    "صرف دیکھنا چاہتے ہیں؟",
+    "تود الاستكشاف فقط؟"
+  ],
+  "Your journey, at your own pace.": [
+    "آپ کا سفر، آپ کی اپنی رفتار سے۔",
+    "رحلتك، على وتيرتك."
+  ],
+  "Your bookmarks and progress, together in one place.": [
+    "آپ کے بُک مارکس اور پیش رفت، ایک ہی جگہ پر۔",
+    "علاماتك المرجعية وتقدمك، في مكان واحد."
+  ],
+  "A space for reflection": [
+    "غور و فکر کی جگہ",
+    "مساحة للتأمل"
+  ],
+  "Every journey begins with a step.": [
+    "ہر سفر ایک قدم سے شروع ہوتا ہے۔",
+    "كل رحلة تبدأ بخطوة."
+  ],
+  "A little knowledge. A moment of reflection. A little closer, every day.": [
+    "تھوڑا علم۔ ایک لمحۂ فکر۔ ہر روز، کچھ اور قریب۔",
+    "قليل من المعرفة. لحظة تأمل. أقرب قليلًا، كل يوم."
+  ],
+  "A space for curious hearts.": [
+    "متجسس دلوں کے لیے ایک جگہ۔",
+    "مساحة للقلوب المتطلعة."
+  ],
+  "YOUR NEXT CHAPTER": [
+    "آپ کا اگلا باب",
+    "فصلك القادم"
+  ],
+  "YOUR JOURNEY CONTINUES": [
+    "آپ کا سفر جاری ہے",
+    "رحلتك مستمرة"
+  ],
+  "A LITTLE CLOSER, EVERY DAY": [
+    "ہر روز، کچھ اور قریب",
+    "أقرب قليلًا، كل يوم"
+  ],
+  "Deen e Safar home": [
+    "دینِ سفر کا مرکزی صفحہ",
+    "الصفحة الرئيسية لدين سفر"
+  ],
+  "Restoring your session…": [
+    "آپ کا سیشن بحال ہو رہا ہے…",
+    "جارٍ استعادة جلستك…"
+  ],
+  "Check your inbox": [
+    "اپنا اِن باکس دیکھیں",
+    "تحقق من بريدك الوارد"
+  ],
+  "Your journey starts here": [
+    "آپ کا سفر یہاں سے شروع ہوتا ہے",
+    "رحلتك تبدأ هنا"
+  ],
+  "Your account has been created. Check your inbox for a verification email, then continue exploring.": [
+    "آپ کا اکاؤنٹ بن گیا ہے۔ تصدیقی ای میل کے لیے اپنا اِن باکس دیکھیں، پھر دریافت جاری رکھیں۔",
+    "تم إنشاء حسابك. تحقق من بريدك الوارد للحصول على رسالة التحقق، ثم تابع الاستكشاف."
+  ],
+  "If the email has not arrived, you can resend it from Account.": [
+    "ای میل نہ ملے تو اکاؤنٹ کے صفحے سے دوبارہ بھیج سکتے ہیں۔",
+    "إذا لم تصلك الرسالة، يمكنك إعادة إرسالها من الحساب."
+  ],
+  "Continue to dashboard": [
+    "ڈیش بورڈ پر جائیں",
+    "المتابعة إلى لوحة التحكم"
+  ],
+  "You’re signed in": [
+    "آپ سائن اِن ہیں",
+    "تم تسجيل دخولك"
+  ],
+  "Your next chapter is waiting.": [
+    "آپ کا اگلا باب آپ کا منتظر ہے۔",
+    "فصلك القادم بانتظارك."
+  ],
+  "All set": [
+    "سب تیار ہے",
+    "كل شيء جاهز"
+  ],
+  "Your account was created. Refresh your account to finish syncing your profile.": [
+    "آپ کا اکاؤنٹ بن گیا ہے۔ پروفائل کی ہم وقت سازی مکمل کرنے کے لیے اکاؤنٹ ریفریش کریں۔",
+    "تم إنشاء حسابك. حدّث الحساب لإكمال مزامنة ملفك الشخصي."
+  ],
+  "You’re signed in. Profile sync is temporarily unavailable. Retry from Account.": [
+    "آپ سائن اِن ہیں۔ پروفائل کی ہم وقت سازی عارضی طور پر دستیاب نہیں۔ اکاؤنٹ سے دوبارہ کوشش کریں۔",
+    "أنت مسجل الدخول. مزامنة الملف الشخصي غير متاحة مؤقتًا. أعد المحاولة من الحساب."
+  ],
+  "This account cannot sign in. Contact support or continue as Guest.": [
+    "یہ اکاؤنٹ سائن اِن نہیں کر سکتا۔ معاونت سے رابطہ کریں یا مہمان کے طور پر جاری رکھیں۔",
+    "لا يمكن لهذا الحساب تسجيل الدخول. تواصل مع الدعم أو تابع كضيف."
+  ],
+  "Another sign-in window is already open. Finish that sign-in first.": [
+    "سائن اِن کی ایک اور ونڈو کھلی ہوئی ہے۔ پہلے وہاں سائن اِن مکمل کریں۔",
+    "نافذة تسجيل دخول أخرى مفتوحة. أكمل تسجيل الدخول فيها أولًا."
+  ],
+  "Your session has expired. Sign in again.": [
+    "آپ کا سیشن ختم ہو گیا ہے۔ دوبارہ سائن اِن کریں۔",
+    "انتهت جلستك. سجل الدخول مرة أخرى."
+  ],
+  "Could not create an account with these details. Try signing in or resetting your password.": [
+    "ان معلومات سے اکاؤنٹ نہیں بن سکا۔ سائن اِن کرنے یا پاس ورڈ ری سیٹ کرنے کی کوشش کریں۔",
+    "تعذر إنشاء حساب بهذه البيانات. حاول تسجيل الدخول أو إعادة تعيين كلمة المرور."
+  ],
+  "If your browser interrupted the popup, you can sign in without a popup.": [
+    "اگر براؤزر نے پاپ اَپ روک دیا ہو تو آپ اسی ٹیب میں سائن اِن کر سکتے ہیں۔",
+    "إذا قاطع المتصفح النافذة المنبثقة، يمكنك تسجيل الدخول في علامة التبويب نفسها."
+  ],
+  "Continue with Google in this tab": [
+    "اسی ٹیب میں گوگل کے ساتھ جاری رکھیں",
+    "المتابعة باستخدام Google في علامة التبويب هذه"
+  ],
+  "Guest bookmarks, reading positions, notes and settings stay in this browser. Signing in uses Firebase Authentication; account profiles and synced progress are stored by our backend. Guest data is imported only with your consent. AI requests use Groq when available; saved conversation history is optional. You can delete your account from Account. Public Quran, audio and prayer providers receive requests, including the location you choose for prayer times. Fonts load from Google Fonts.": [
+    "مہمان کے بُک مارکس، مطالعے کی جگہ، نوٹس اور ترتیبات اسی براؤزر میں رہتے ہیں۔ سائن اِن کے لیے Firebase Authentication استعمال ہوتا ہے؛ اکاؤنٹ کے پروفائل اور ہم وقت پیش رفت ہمارے بیک اینڈ پر محفوظ ہوتے ہیں۔ مہمان کا ڈیٹا صرف آپ کی اجازت سے درآمد ہوتا ہے۔ دستیابی کی صورت میں AI کی درخواستیں Groq کو بھیجی جاتی ہیں؛ گفتگو کی تاریخ محفوظ کرنا اختیاری ہے۔ اکاؤنٹ کے صفحے سے اپنا اکاؤنٹ حذف کر سکتے ہیں۔ قرآن، آڈیو اور نماز کے عوامی فراہم کنندگان کو درخواستیں موصول ہوتی ہیں، جن میں نماز کے اوقات کے لیے آپ کا منتخب مقام شامل ہے۔ فونٹس Google Fonts سے آتے ہیں۔",
+    "تبقى علامات الضيف ومواضع القراءة والملاحظات والإعدادات في هذا المتصفح. يستخدم تسجيل الدخول Firebase Authentication؛ وتُحفظ ملفات الحساب والتقدم المتزامن في خادمنا. لا تُستورد بيانات الضيف إلا بموافقتك. تستخدم طلبات الذكاء الاصطناعي Groq عند توفره؛ وحفظ سجل المحادثات اختياري. يمكنك حذف حسابك من صفحة الحساب. يتلقى مزودو القرآن والصوت وأوقات الصلاة طلبات، بما فيها الموقع الذي تختاره لحساب أوقات الصلاة. تُحمّل الخطوط من Google Fonts."
+  ],
+  "Study the Prophetic example through evidence, context and careful questions.": [
+    "شواہد، سیاق اور غور طلب سوالوں سے اسوۂ نبوی کا مطالعہ کریں۔",
+    "ادرس القدوة النبوية بالأدلة والسياق والأسئلة المتأنية."
+  ],
+  "Explore contributions and character without fictional conversations.": [
+    "فرضی مکالموں کے بغیر خدمات اور کردار کا مطالعہ کریں۔",
+    "تعرّف على الإسهامات والأخلاق دون حوارات مختلقة."
+  ],
+  "Study historical events with context and explicit limits.": [
+    "تاریخی واقعات کا سیاق اور حدود کے ساتھ مطالعہ کریں۔",
+    "ادرس الأحداث التاريخية ضمن سياقها وحدود المعرفة."
+  ],
+  "Begin with Quranic accounts, keeping later narratives distinct.": [
+    "قرآنی بیان سے آغاز کریں اور بعد کی روایات الگ رکھیں۔",
+    "ابدأ بالقصص القرآني مع تمييز الروايات اللاحقة."
+  ],
+  "Read themes and passages with attributed translations.": [
+    "درست نسبت والے تراجم کے ساتھ آیات اور موضوعات پڑھیں۔",
+    "اقرأ الموضوعات والآيات بترجمات منسوبة إلى أصحابها."
+  ],
+  "Learn attribution, grading and careful interpretation.": [
+    "حوالہ، درجہ اور محتاط تشریح جانیں۔",
+    "تعلّم العزو والتصنيف والتفسير المتأني."
+  ],
+  "Connect worship, belief and everyday character.": [
+    "عبادت، ایمان اور روزمرہ اخلاق کا تعلق سمجھیں۔",
+    "اربط العبادة والإيمان بأخلاق الحياة اليومية."
+  ],
+  "Identify what the source says.": [
+    "ماخذ کے بیان کو پہچانیں۔",
+    "حدّد ما يقوله المصدر."
+  ],
+  "Separate evidence from interpretation.": [
+    "شواہد اور تشریح کو الگ رکھیں۔",
+    "ميّز الأدلة عن التفسير."
+  ],
+  "Record a question for further study.": [
+    "مزید مطالعے کے لیے سوال لکھیں۔",
+    "دوّن سؤالًا لمزيد من الدراسة."
+  ],
+  "Progress saved.": [
+    "پیش رفت محفوظ ہو گئی۔",
+    "تم حفظ التقدم."
+  ],
+  "Guest learning imported. Device data was kept.": [
+    "مہمان کا مطالعہ منتقل ہو گیا۔ آلے کا ڈیٹا برقرار ہے۔",
+    "تم استيراد تعلم الضيف مع الاحتفاظ ببيانات الجهاز."
+  ],
+  "Source text could not be loaded.": [
+    "ماخذ کا متن نہیں کھل سکا۔",
+    "تعذر تحميل نص المصدر."
+  ],
+  "Propose or update a source passage": [
+    "ماخذ کا اقتباس تجویز یا تازہ کریں",
+    "اقترح مقطعًا مصدريًا أو حدّثه"
+  ],
+  "Paste source metadata and exact permitted text. Include academyScopes with lessonId and stepId to assign a lesson. New content and changed mappings require fresh content and licensing review.": [
+    "ماخذ کی تفصیلات اور بعینہٖ مجاز متن درج کریں۔ سبق مقرر کرنے کے لیے academyScopes میں lessonId اور stepId شامل کریں۔ نئے مواد اور بدلے ہوئے روابط کا مواد اور اجازتِ استعمال دوبارہ جانچنا ضروری ہے۔",
+    "أدخل بيانات المصدر والنص المسموح كما هو. أضف academyScopes مع lessonId وstepId. يتطلب المحتوى الجديد وتغيير الربط مراجعة جديدة للمحتوى والترخيص."
+  ],
+  "Source proposal JSON": [
+    "ماخذ کی تجویز کا JSON",
+    "JSON لاقتراح المصدر"
+  ],
+  "Save source for review": [
+    "ماخذ جائزے کے لیے محفوظ کریں",
+    "احفظ المصدر للمراجعة"
+  ],
+  "Source proposal saved. New or changed content requires review before teaching.": [
+    "ماخذ کی تجویز محفوظ ہو گئی۔ نئے یا بدلے مواد کی تدریس سے پہلے جائزہ ضروری ہے۔",
+    "حُفظ الاقتراح. يتطلب المحتوى الجديد أو المعدل مراجعة قبل تدريسه."
+  ],
+  "Enter a valid source JSON object.": [
+    "ماخذ کا درست JSON آبجیکٹ درج کریں۔",
+    "أدخل كائن JSON صحيحًا للمصدر."
+  ],
+  "YOUR PERSONAL LEARNING SPACE": [
+    "آپ کی ذاتی مطالعہ گاہ",
+    "YOUR PERSONAL LEARNING SPACE"
+  ],
+  "YOUR JOURNEY": [
+    "آپ کا سفر",
+    "YOUR JOURNEY"
+  ],
+  "KEEP CLOSE": [
+    "محفوظ مجموعہ",
+    "KEEP CLOSE"
+  ],
+  "My account": [
+    "میرا اکاؤنٹ",
+    "My account"
+  ],
+  "Edit profile": [
+    "پروفائل تبدیل کریں",
+    "Edit profile"
+  ],
+  "Member since": [
+    "رکنیت کی تاریخ",
+    "Member since"
+  ],
+  "Email not verified": [
+    "ای میل کی تصدیق نہیں ہوئی",
+    "Email not verified"
+  ],
+  "Account sections": [
+    "اکاؤنٹ کے حصے",
+    "Account sections"
+  ],
+  "My learning": [
+    "میرا مطالعہ",
+    "My learning"
+  ],
+  "Saved content": [
+    "محفوظ مواد",
+    "Saved content"
+  ],
+  "Security": [
+    "تحفظ",
+    "Security"
+  ],
+  "Return to the academy": [
+    "اکیڈمی واپس جائیں",
+    "Return to the academy"
+  ],
+  "Learning overview": [
+    "مطالعے کا جائزہ",
+    "Learning overview"
+  ],
+  "Explore the academy": [
+    "اکیڈمی دیکھیں",
+    "Explore the academy"
+  ],
+  "Completed academy lessons": [
+    "اکیڈمی کے مکمل اسباق",
+    "Completed academy lessons"
+  ],
+  "Active learning tracks": [
+    "جاری مطالعاتی شعبے",
+    "Active learning tracks"
+  ],
+  "Saved references": [
+    "محفوظ حوالے",
+    "Saved references"
+  ],
+  "Recent learning activity": [
+    "حالیہ مطالعہ",
+    "Recent learning activity"
+  ],
+  "Last studied": [
+    "آخری مطالعہ",
+    "Last studied"
+  ],
+  "Your next chapter starts here": [
+    "آپ کا اگلا باب یہاں شروع ہوتا ہے",
+    "Your next chapter starts here"
+  ],
+  "Choose a lesson and return here to follow your learning journey.": [
+    "ایک سبق منتخب کریں اور اپنے مطالعاتی سفر کا جائزہ یہاں دیکھیں۔",
+    "Choose a lesson and return here to follow your learning journey."
+  ],
+  "Saved Islamic content": [
+    "محفوظ اسلامی مواد",
+    "Saved Islamic content"
+  ],
+  "Search saved content": [
+    "محفوظ مواد تلاش کریں",
+    "Search saved content"
+  ],
+  "No saved content matches. Save a verse, dua, hadith or lesson to find it here.": [
+    "متعلقہ محفوظ مواد نہیں ملا۔ آیت، دعا، حدیث یا سبق محفوظ کریں۔",
+    "No saved content matches. Save a verse, dua, hadith or lesson to find it here."
+  ],
+  "Security and account controls": [
+    "تحفظ اور اکاؤنٹ کے اختیارات",
+    "Security and account controls"
+  ],
+  "Sign-in methods": [
+    "سائن ان کے طریقے",
+    "Sign-in methods"
+  ],
+  "Email and password": [
+    "ای میل اور پاس ورڈ",
+    "Email and password"
+  ],
+  "Password reset email sent.": [
+    "پاس ورڈ تبدیل کرنے کی ای میل بھیج دی گئی۔",
+    "Password reset email sent."
+  ],
+  "Saving…": [
+    "محفوظ ہو رہا ہے…",
+    "Saving…"
+  ],
+  "Learning preferences": [
+    "مطالعے کی ترجیحات",
+    "Learning preferences"
+  ],
+  "Preferred explanation language": [
+    "وضاحت کی پسندیدہ زبان",
+    "Preferred explanation language"
+  ],
+  "Preferred difficulty": [
+    "پسندیدہ علمی سطح",
+    "Preferred difficulty"
+  ],
+  "Lesson text size": [
+    "سبق کے متن کا حجم",
+    "Lesson text size"
+  ],
+  "Show lesson sources by default": [
+    "سبق کے ماخذ خود بخود دکھائیں",
+    "Show lesson sources by default"
+  ],
+  "Large": [
+    "بڑا",
+    "Large"
+  ],
+  "AI illustration · not historical evidence": [
+    "اے آئی کی تمثیل · تاریخی ثبوت نہیں",
+    "AI illustration · not historical evidence"
+  ],
+  "A desert path leading toward a distant palm oasis.": [
+    "صحرا کا راستہ دور کھجوروں کے نخلستان کی طرف جاتا ہے۔",
+    "A desert path leading toward a distant palm oasis."
+  ],
+  "An empty early Arabian settlement among rugged hills.": [
+    "پتھریلے پہاڑوں میں قدیم عرب کی ایک خالی بستی۔",
+    "An empty early Arabian settlement among rugged hills."
+  ],
+  "A shaded empty courtyard arranged for community learning.": [
+    "اجتماعی مطالعے کے لیے ترتیب دیا گیا سایہ دار خالی صحن۔",
+    "A shaded empty courtyard arranged for community learning."
+  ],
+  "An open desert basin with an old stone well.": [
+    "کھلا صحرائی میدان اور پتھر کا پرانا کنواں۔",
+    "An open desert basin with an old stone well."
+  ],
+  "A quiet rocky mountain landscape inspired by Uhud.": [
+    "احد سے متاثر پُرسکون پتھریلا پہاڑی منظر۔",
+    "A quiet rocky mountain landscape inspired by Uhud."
+  ],
+  "A peaceful river, palms and distant earthen buildings.": [
+    "پُرسکون دریا، کھجوریں اور دور مٹی کی عمارتیں۔",
+    "A peaceful river, palms and distant earthen buildings."
+  ],
+  "A blank open book on a wooden rehal in a reading alcove.": [
+    "مطالعے کی جگہ لکڑی کی رحل پر خالی صفحات والی کھلی کتاب۔",
+    "A blank open book on a wooden rehal in a reading alcove."
+  ],
+  "Unmarked books, blank parchment and a reed pen in a study.": [
+    "مطالعہ گاہ میں بے تحریر کتابیں، خالی ورق اور قلم۔",
+    "Unmarked books, blank parchment and a reed pen in a study."
+  ],
+  "An empty prayer space with woven mats and soft daylight.": [
+    "چٹائیوں اور نرم روشنی کے ساتھ خالی نماز گاہ۔",
+    "An empty prayer space with woven mats and soft daylight."
+  ],
+  "Read the evidence": [
+    "شواہد پڑھیں",
+    "Read the evidence"
+  ],
+  "Explore meaning and limits": [
+    "معنی اور حدود سمجھیں",
+    "Explore meaning and limits"
+  ],
+  "Reflect and check understanding": [
+    "غور کریں اور سمجھ جانچیں",
+    "Reflect and check understanding"
+  ],
+  "Your completed quizzes will appear here.": [
+    "آپ کے مکمل امتحانات یہاں دکھائی دیں گے۔",
+    "Your completed quizzes will appear here."
+  ],
+  "An empty stone well beside a quiet countryside path.": [
+    "پُرسکون دیہی راستے کے پاس پتھر کا خالی کنواں۔",
+    "An empty stone well beside a quiet countryside path."
+  ],
+  "An acacia tree in a quiet empty desert valley.": [
+    "پُرسکون خالی صحرائی وادی میں ببول کا درخت۔",
+    "An acacia tree in a quiet empty desert valley."
+  ],
+  "Dark volcanic rocks on the outskirts of a palm oasis.": [
+    "کھجوروں کے نخلستان کے کنارے سیاہ آتش فشانی پتھر۔",
+    "Dark volcanic rocks on the outskirts of a palm oasis."
+  ],
+  "An empty stone street between humble earthen houses.": [
+    "سادہ مٹی کے گھروں کے درمیان پتھر کی خالی گلی۔",
+    "An empty stone street between humble earthen houses."
+  ]
 }

@@ -9,7 +9,7 @@ import { validateBackup } from "../features/backup";
 import i18n from "../features/i18n";
 import { useGuestPreferences } from "../hooks/useGuestData";
 import { clearGuestData, exportGuestData, replaceGuestData } from "../services/guest/guestStorage";
-import { setInterfaceLanguage, updatePreferences, type Language } from "../services/guest/preferencesStorage";
+import { setInterfaceLanguage, updatePreferences, defaultLearningPreferences, type LearningPreferences, type Language } from "../services/guest/preferencesStorage";
 import { useAuth } from "../context/AuthContext";
 import { link } from "../lib/router";
 
@@ -98,6 +98,7 @@ export default function Preferences() {
         </div>
       </section>
 
+      <section className="panel" aria-labelledby="pref-learning"><h2 id="pref-learning">{t("Learning preferences")}</h2><div className="settings-grid">{([['language','Preferred explanation language',['en','ur','roman-ur']],['difficulty','Preferred difficulty',['beginner','intermediate','advanced']],['reading','Lesson text size',['comfortable','large']]] as const).map(([key,label,options])=><label key={key}><span>{t(label)}</span><select aria-label={t(label)} value={(preferences.learning||defaultLearningPreferences)[key]} onChange={e=>{if(!updatePreferences({learning:{...(preferences.learning||defaultLearningPreferences),[key]:e.target.value} as LearningPreferences}))notify(t(STORAGE_FAILED));}}>{options.map(value=><option value={value} key={value}>{t(({en:'English',ur:'Urdu','roman-ur':'Roman Urdu',beginner:'Beginner',intermediate:'Intermediate',advanced:'Advanced',comfortable:'Comfortable',large:'Large'})[value])}</option>)}</select></label>)}<label><span>{t("Show lesson sources by default")}</span><input type="checkbox" checked={(preferences.learning||defaultLearningPreferences).showSources} onChange={e=>{if(!updatePreferences({learning:{...(preferences.learning||defaultLearningPreferences),showSources:e.target.checked}}))notify(t(STORAGE_FAILED));}}/></label></div></section>
       <section className="panel" aria-labelledby="pref-reader">
         <h2 id="pref-reader">{t("Quran reader")}</h2>
         <QuranSettings />

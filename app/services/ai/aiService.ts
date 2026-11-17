@@ -6,7 +6,7 @@ import { getJson } from "../../lib/apiClient";
 import { isRecord, isString } from "../../lib/validation";
 
 export type Citation = {
-  kind: "quran" | "hadith";
+  kind: "quran" | "hadith" | "tafsir" | "seerah" | "history" | "scholarly-opinion";
   /** "Quran 2:153" or the Hadith title. */
   reference: string;
   arabic?: string;

@@ -2,8 +2,8 @@
 import { backendRequest, BackendError } from "./backendClient";
 import type { Preferences } from "../guest/preferencesStorage";
 import type { ReadingProgress } from "../guest/readingProgressStorage";
-type Profile = { id: string; name: string; email: string; photoURL: string; role: "user" | "admin"; preferences: Preferences; version: number };
-type Bookmark = { id: string; contentType: "quran" | "dua" | "hadith"; contentRef: string; createdAt: string };
+type Profile = { id: string; name: string; email: string; photoURL: string; createdAt?: string; role: "user" | "admin"; preferences: Preferences; version: number };
+type Bookmark = { id: string; contentType: "quran" | "dua" | "hadith" | "lesson"; contentRef: string; createdAt: string };
 type Position = { surahNumber: number; ayahNumber: number; updatedAt: string; version: number };
 type Lesson = { lessonId: string; note: string; status: string; version: number };
 type Intent = { key: string; run: (override: boolean) => Promise<void> };

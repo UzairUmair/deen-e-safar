@@ -20,7 +20,7 @@ export function CitationCard({ citation }: { citation: Citation }) {
     <a className="citation-card" href={citation.href} {...(citation.external ? { target: "_blank", rel: "noreferrer" } : {})}>
       <span className="citation-kind">
         <BookOpen size={15} aria-hidden="true" />
-        {citation.kind === "quran" ? t("Quran") : t("Hadith")}
+        {t(({quran:"Quran",hadith:"Hadith",tafsir:"Tafsir",seerah:"Seerah report",history:"Historical evidence","scholarly-opinion":"Scholarly opinion"})[citation.kind])}
       </span>
       <strong>{citation.reference}</strong>
       {citation.arabic && (

@@ -31,7 +31,9 @@ export type PrayerLocation = {
 
 export type PrayerPreferences = { location: PrayerLocation; method: number; school: 0 | 1; hour12: boolean };
 
-export type Preferences = { language: Language; theme: "light" | "dark"; displayName: string; quran: QuranPreferences; prayer: PrayerPreferences };
+export type LearningPreferences = { language: "en" | "ur" | "roman-ur"; difficulty: "beginner" | "intermediate" | "advanced"; reading: "comfortable" | "large"; showSources: boolean };
+export const defaultLearningPreferences: LearningPreferences = {language:"en",difficulty:"beginner",reading:"comfortable",showSources:true};
+export type Preferences = { learning?: LearningPreferences; language: Language; theme: "light" | "dark"; displayName: string; quran: QuranPreferences; prayer: PrayerPreferences };
 
 export const ARABIC_SIZE = { min: 24, max: 56 };
 export const TRANSLATION_SIZE = { min: 14, max: 26 };
@@ -65,7 +67,9 @@ function validate(raw: unknown): Preferences | null {
   const base = defaults();
   const q = isRecord(raw.quran) ? raw.quran : {};
   const p = isRecord(raw.prayer) ? raw.prayer : {};
+  const l = isRecord(raw.learning) ? raw.learning : {};
   return {
+    learning: {language:isOneOf(l.language,["en","ur","roman-ur"] as const)?l.language:"en",difficulty:isOneOf(l.difficulty,["beginner","intermediate","advanced"] as const)?l.difficulty:"beginner",reading:l.reading==="large"?"large":"comfortable",showSources:l.showSources!==false},
     language: isOneOf(raw.language, LANGUAGES) ? raw.language : base.language,
     theme: isOneOf(raw.theme, ["light", "dark"] as const) ? raw.theme : base.theme,
     displayName: isString(raw.displayName) ? raw.displayName.slice(0, 60) : "",

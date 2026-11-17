@@ -80,3 +80,19 @@ changes. The backend performs its own authorization and scoring.
 
 Current instructions are in docs/setup.md. Other audit/implementation documents
 are retained for project history and may describe the former combined workspace.
+
+
+## AI Academy (local implementation)
+
+See [implementation report](docs/ai-academy-implementation-report.md),
+[architecture](docs/ai-academy-architecture.md), [API](docs/ai-academy-api.md),
+[source policy](docs/ai-academy-source-policy.md) and [testing](docs/ai-academy-testing.md).
+Historical source review and publication remain pending.
+
+[Historical source research](docs/ai-academy-source-research.md) and
+[adding reviewed passages](docs/ai-academy-content-review.md) describe licensing
+and runtime lesson assignments. No publication or automatic approval.
+
+## Account and learning redesign (local)
+
+See [account design](docs/account-page-design.md), [academy design](docs/learn-islam-design.md), [image manifest](docs/academy-image-manifest.md), [source policy](docs/academy-source-policy.md), and [test report](docs/account-and-learning-test-report.md).

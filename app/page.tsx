@@ -14,6 +14,7 @@ import { AnimatedButton } from "./components/motion/AnimatedButton";
 import { Skeleton, ToastContext } from "./components/ui/states";
 import i18n, { directionOf, LanguageContext, tr } from "./features/i18n";
 import Learn from "./features/Learn";
+import Academy from "./features/academy/Academy";
 import Library from "./features/Library";
 import { ReminderScheduler, RemindersTool } from "./features/Personal";
 import { useGuestPreferences } from "./hooks/useGuestData";
@@ -156,6 +157,7 @@ function Shell() {
       case "ai":
         return <IslamicAI />;
       case "learn":
+        return <Academy />;
       case "course":
       case "lesson":
         return <Learn notify={setToast} />;

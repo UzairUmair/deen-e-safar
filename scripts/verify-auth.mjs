@@ -30,7 +30,7 @@ try {
   await page.waitForURL('**/#/account/dashboard'); await synced();
   await visit('/bookmarks'); await expectText('No saved verses yet');
   await visit('/account'); await page.getByLabel('Name', { exact: true }).fill('Updated Reader'); await page.getByRole('button', { name: 'Save profile', exact: true }).click(); await expectText('Saved.');
-  await page.getByRole('checkbox').check(); await page.getByRole('button', { name: 'Import selected guest data', exact: true }).click(); await expectText('Guest data imported. The guest copy remains on this device.');
+  await page.locator('.account-check input').check(); await page.getByRole('button', { name: 'Import selected guest data', exact: true }).click(); await expectText('Guest data imported. The guest copy remains on this device.');
   await page.getByRole('button', { name: 'Import selected guest data', exact: true }).click(); await expectText('Guest data imported. The guest copy remains on this device.');
   assert.equal(await page.evaluate(() => localStorage.getItem('deen-v2:guest:bookmarks')), guest);
   await visit('/bookmarks'); assert.equal(await page.locator('.bookmark-row').count(), 1);
