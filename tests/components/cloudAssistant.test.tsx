@@ -19,10 +19,10 @@ it("leaves history disabled, labels generated text and displays server-owned cit
 });
 it("saves only after opt-in, continues the saved conversation and reports its own message", async () => {
   request.mockImplementation(async path => path === "/api/ai/chat" ? { data: { mode: "generated", text: "Controlled answer", citations: [citation], messageId: request.mock.calls.filter(([p]) => p === "/api/ai/chat").length === 1 ? messageId : "0123456789abcdef01234569", conversationId } } : path.includes("conversations?") ? { data: [{ id: conversationId, title: "Patience" }], meta: { nextCursor: null } } : { data: { id: "report" } });
-  render(<CloudAssistant onSourceSearch={() => {}} />); fireEvent.click(screen.getByLabelText("Save chat to my account")); send();
+  render(<CloudAssistant onSourceSearch={() => {}} />); fireEvent.click(screen.getByRole("button",{name:"Chat history"})); fireEvent.click(screen.getByLabelText("Save chat to my account")); send();
   await screen.findByText("Controlled answer"); await waitFor(() => expect(screen.getByRole("button", { name: "Send" })).toBeDisabled());
   expect(request).toHaveBeenCalledWith("/api/ai/chat", expect.objectContaining({ body: expect.objectContaining({ historyEnabled: true }) }));
-  fireEvent.click(screen.getByText("Report answer")); fireEvent.change(screen.getByLabelText("Reason for reporting"), { target: { value: "Please review this explanation." } }); fireEvent.submit(screen.getByLabelText("Reason for reporting").closest("form")!);
+  fireEvent.click(screen.getByText("More options")); fireEvent.click(screen.getByText("Report answer")); fireEvent.change(screen.getByLabelText("Reason for reporting"), { target: { value: "Please review this explanation." } }); fireEvent.submit(screen.getByLabelText("Reason for reporting").closest("form")!);
   await screen.findByText("Report submitted.");
   expect(request).toHaveBeenCalledWith("/api/content-reports", expect.objectContaining({ body: { targetType: "ai-message", targetId: messageId, reason: "Please review this explanation." } }));
   await act(async () => send()); await waitFor(() => expect(request.mock.calls.filter(([path]) => path === "/api/ai/chat")).toHaveLength(2));
