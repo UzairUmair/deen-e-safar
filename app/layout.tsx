@@ -7,6 +7,7 @@ import "./styles/homepage.css";
 import "./styles/app-screens.css";
 import "./styles/auth.css";
 import "./styles/academy.css";
+import "./styles/assistant.css";
 import "./styles/account-center.css";
 export const metadata = {
   title: "Deen e Safar — A Beautiful Journey",

@@ -1,7 +1,4 @@
-// The assistant's service boundary. Screens call `askAssistant`; which provider answers is
-// decided here. Today that is a literal text search over the bundled Quran and Hadith
-// snapshot. A live provider (our Express backend with source-grounded retrieval) will
-// implement the same interface and set `live: true`; no generated text is produced until then.
+// Separate bundled source-search mode. Conversational requests use the existing Express chat API.
 import { getJson } from "../../lib/apiClient";
 import { isRecord, isString } from "../../lib/validation";
 

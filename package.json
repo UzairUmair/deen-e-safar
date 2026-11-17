@@ -23,7 +23,8 @@
     "measure:motion": "node scripts/measure-motion.mjs",
     "verify:backend-catalog": "node scripts/verify-backend-catalog.mjs",
     "verify:academy": "node scripts/verify-academy.mjs",
-    "verify:account-learning": "node scripts/verify-account-learning.mjs"
+    "verify:account-learning": "node scripts/verify-account-learning.mjs",
+    "verify:assistant": "node scripts/verify-assistant.mjs"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.9",

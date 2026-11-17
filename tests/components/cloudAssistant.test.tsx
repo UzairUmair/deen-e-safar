@@ -1,6 +1,7 @@
 import { act, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { beforeEach, expect, it, vi } from "vitest";
 import CloudAssistant from "../../app/screens/CloudAssistant";
+vi.mock("../../app/context/AuthContext",()=>({useAuth:()=>({user:{uid:'test',emailVerified:true}}),authError:(e:Error)=>e.message}));
 const request = vi.hoisted(() => vi.fn());
 vi.mock("../../app/services/account/backendClient", async original => ({ ...await original<object>(), backendRequest: request }));
 const messageId = "0123456789abcdef01234567", conversationId = "0123456789abcdef01234568";
@@ -18,7 +19,7 @@ it("leaves history disabled, labels generated text and displays server-owned cit
 });
 it("saves only after opt-in, continues the saved conversation and reports its own message", async () => {
   request.mockImplementation(async path => path === "/api/ai/chat" ? { data: { mode: "generated", text: "Controlled answer", citations: [citation], messageId: request.mock.calls.filter(([p]) => p === "/api/ai/chat").length === 1 ? messageId : "0123456789abcdef01234569", conversationId } } : path.includes("conversations?") ? { data: [{ id: conversationId, title: "Patience" }], meta: { nextCursor: null } } : { data: { id: "report" } });
-  render(<CloudAssistant onSourceSearch={() => {}} />); fireEvent.click(screen.getByLabelText("Save this conversation to my account")); send();
+  render(<CloudAssistant onSourceSearch={() => {}} />); fireEvent.click(screen.getByLabelText("Save chat to my account")); send();
   await screen.findByText("Controlled answer"); await waitFor(() => expect(screen.getByRole("button", { name: "Send" })).toBeDisabled());
   expect(request).toHaveBeenCalledWith("/api/ai/chat", expect.objectContaining({ body: expect.objectContaining({ historyEnabled: true }) }));
   fireEvent.click(screen.getByText("Report answer")); fireEvent.change(screen.getByLabelText("Reason for reporting"), { target: { value: "Please review this explanation." } }); fireEvent.submit(screen.getByLabelText("Reason for reporting").closest("form")!);

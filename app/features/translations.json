@@ -1384,7 +1384,7 @@
     "هذه أداة بحث نصي وليست ذكاءً اصطناعيًا توليديًا أو خدمة فتوى. النتائج تطابق عبارتك ولا تمثل إجابة كاملة عن السؤال."
   ],
   "Search sources": [
-    "حوالوں میں تلاش کریں",
+    "ماخذ تلاش کریں",
     "البحث في المصادر"
   ],
   "Try patience, prayer, or mercy…": [
@@ -4842,5 +4842,137 @@
   "An empty stone street between humble earthen houses.": [
     "سادہ مٹی کے گھروں کے درمیان پتھر کی خالی گلی۔",
     "An empty stone street between humble earthen houses."
+  ],
+  "Conversations": [
+    "گفتگو",
+    "Conversations"
+  ],
+  "New Chat": [
+    "نئی گفتگو",
+    "New Chat"
+  ],
+  "Save chat to my account": [
+    "گفتگو میرے اکاؤنٹ میں محفوظ کریں",
+    "Save chat to my account"
+  ],
+  "Search conversations": [
+    "گفتگو تلاش کریں",
+    "Search conversations"
+  ],
+  "Assalamu Alaikum! What would you like to learn today?": [
+    "السلام علیکم! آج آپ کیا سیکھنا چاہتے ہیں؟",
+    "Assalamu Alaikum! What would you like to learn today?"
+  ],
+  "Explore Islamic knowledge through trusted sources.": [
+    "معتبر ماخذ سے اسلامی علم حاصل کریں۔",
+    "Explore Islamic knowledge through trusted sources."
+  ],
+  "Learn Seerah": [
+    "سیرت سیکھیں",
+    "Learn Seerah"
+  ],
+  "Stories of Sahaba": [
+    "صحابہ کی زندگیاں",
+    "Stories of Sahaba"
+  ],
+  "Quran & Hadith": [
+    "قرآن و حدیث",
+    "Quran & Hadith"
+  ],
+  "Response language": [
+    "جواب کی زبان",
+    "Response language"
+  ],
+  "Auto": [
+    "خودکار",
+    "Auto"
+  ],
+  "You": [
+    "آپ",
+    "You"
+  ],
+  "Deen AI": [
+    "دین اے آئی",
+    "Deen AI"
+  ],
+  "Copy answer": [
+    "جواب نقل کریں",
+    "Copy answer"
+  ],
+  "Copy citation": [
+    "حوالہ نقل کریں",
+    "Copy citation"
+  ],
+  "Explain simply": [
+    "آسان وضاحت",
+    "Explain simply"
+  ],
+  "More detail": [
+    "مزید تفصیل",
+    "More detail"
+  ],
+  "Regenerate": [
+    "دوبارہ جواب",
+    "Regenerate"
+  ],
+  "Start guided learning": [
+    "مرحلہ وار مطالعہ شروع کریں",
+    "Start guided learning"
+  ],
+  "Preparing your answer…": [
+    "جواب تیار ہو رہا ہے…",
+    "Preparing your answer…"
+  ],
+  "Stop": [
+    "روکیں",
+    "Stop"
+  ],
+  "Stopped.": [
+    "روک دیا گیا۔",
+    "Stopped."
+  ],
+  "Copied.": [
+    "نقل ہو گیا۔",
+    "Copied."
+  ],
+  "Back to assistant": [
+    "معاون پر واپس جائیں",
+    "Back to assistant"
+  ],
+  "Check references. Consult a qualified scholar for personal rulings.": [
+    "حوالے جانچیں۔ ذاتی دینی مسائل میں مستند عالم سے رجوع کریں۔",
+    "Check references. Consult a qualified scholar for personal rulings."
+  ],
+  "Greetings are available to guests. Verify your email for educational answers.": [
+    "مہمان سلام کا جواب حاصل کر سکتے ہیں۔ تعلیمی جوابات کے لیے ای میل کی تصدیق کریں۔",
+    "Greetings are available to guests. Verify your email for educational answers."
+  ],
+  "Sign in to save conversations and request source-grounded answers.": [
+    "گفتگو محفوظ کرنے اور ماخذ پر مبنی جواب کے لیے سائن ان کریں۔",
+    "Sign in to save conversations and request source-grounded answers."
+  ],
+  "Verify your email to request answers.": [
+    "جوابات کے لیے ای میل کی تصدیق کریں۔",
+    "Verify your email to request answers."
+  ],
+  "Teach me about the life of Prophet Muhammad ﷺ.": [
+    "مجھے نبی کریم ﷺ کی سیرت سکھائیں۔",
+    "Teach me about the life of Prophet Muhammad ﷺ."
+  ],
+  "Who were the first Muslims?": [
+    "ابتدائی مسلمان کون تھے؟",
+    "Who were the first Muslims?"
+  ],
+  "Explain Ghazwa-e-Badr.": [
+    "غزوۂ بدر سمجھائیں۔",
+    "Explain Ghazwa-e-Badr."
+  ],
+  "Tell me about Umar ibn Al-Khattab (RA).": [
+    "عمر بن الخطاب رضی اللہ عنہ کے بارے میں بتائیں۔",
+    "Tell me about Umar ibn Al-Khattab (RA)."
+  ],
+  "What does the Quran teach about patience?": [
+    "قرآن صبر کے بارے میں کیا سکھاتا ہے؟",
+    "What does the Quran teach about patience?"
   ]
 }

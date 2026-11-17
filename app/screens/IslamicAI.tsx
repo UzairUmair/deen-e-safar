@@ -5,8 +5,6 @@ import { useTranslation } from "react-i18next";
 import { PageHeading } from "../components/ui/states";
 import { apiErrorMessage } from "../lib/apiClient";
 import { askAssistant, assistantProvider, MIN_QUERY_LENGTH, type AssistantReply, type Citation } from "../services/ai/aiService";
-import { useAuth } from "../context/AuthContext";
-import { API_BASE, backendRequest } from "../services/account/backendClient";
 import CloudAssistant from "./CloudAssistant";
 
 type Message = { id: number; role: "user"; text: string } | { id: number; role: "assistant"; question: string; status: "loading" | "done" | "error"; reply?: AssistantReply; error?: unknown };
@@ -28,7 +26,7 @@ export function CitationCard({ citation }: { citation: Citation }) {
           {citation.arabic}
         </span>
       )}
-      {citation.excerpt && <span className="citation-excerpt">{citation.excerpt}</span>}
+      {citation.excerpt && <span className="citation-excerpt" dir="auto">{citation.excerpt}</span>}
       {citation.edition && <small>{citation.edition} · {citation.attribution}</small>}
       {citation.authenticity && <small>{citation.authenticity}</small>}
       <small>
@@ -178,14 +176,7 @@ function SourceSearchScreen({ connected = false }: { connected?: boolean }) {
 }
 
 export default function IslamicAI() {
-  const auth = useAuth(), { t } = useTranslation();
-  const [ready, setReady] = useState(false), [sourceSearch, setSourceSearch] = useState(false);
-  useEffect(() => {
-    if (!auth.user || !API_BASE) return;
-    const controller = new AbortController();
-    void backendRequest<{ capabilities: { generatedAI: boolean } }>("/api/health", { public: true, signal: controller.signal }).then(result => { if (!controller.signal.aborted) setReady(result.data.capabilities.generatedAI); }).catch(() => {});
-    return () => controller.abort();
-  }, [auth.user]);
-  if (auth.user && ready && !sourceSearch) return <CloudAssistant onSourceSearch={() => setSourceSearch(true)} />;
-  return <>{auth.user && ready && <button className="chip" onClick={() => setSourceSearch(false)}>{t("Use source-grounded assistant")}</button>}<SourceSearchScreen connected={Boolean(auth.user && ready)} /></>;
+  const {t}=useTranslation();
+  const [sourceSearch,setSourceSearch]=useState(false);
+  return sourceSearch?<><button className="chip" onClick={()=>setSourceSearch(false)}>{t("Back to assistant")}</button><SourceSearchScreen connected/></>:<CloudAssistant onSourceSearch={()=>setSourceSearch(true)}/>;
 }

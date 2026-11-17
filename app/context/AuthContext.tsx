@@ -14,7 +14,8 @@ const unavailable = async () => { throw new Error("Sign-in is unavailable. Conti
 const AuthContext = createContext<Context>({ configured: false, loading: false, syncing: false, redirected: false, user: null, profile: null, error: "", notice: "", login: unavailable, signup: unavailable, google: unavailable, logout: unavailable, refresh: unavailable, verifyEmail: unavailable, resetEmail: unavailable, linkGoogle: unavailable, saveName: unavailable, deleteAccount: unavailable, action: unavailable });
 export const useAuth = () => useContext(AuthContext);
 export function authError(error: unknown): string {
-  const code = (error as { code?: string })?.code;
+  const rawCode = (error as { code?: unknown })?.code;
+  const code = typeof rawCode === "string" ? rawCode : undefined;
   const known: Record<string, string> = {
     "auth/invalid-credential": "Email or password is incorrect.", "auth/wrong-password": "Email or password is incorrect.", "auth/user-not-found": "Email or password is incorrect.",
     "auth/email-already-in-use": "Could not create an account with these details. Try signing in or resetting your password.", "auth/weak-password": "Use a stronger password that meets the account policy.",
