@@ -14,7 +14,7 @@ import { AnimatedButton } from "./components/motion/AnimatedButton";
 import { Skeleton, ToastContext } from "./components/ui/states";
 import i18n, { directionOf, LanguageContext, tr } from "./features/i18n";
 import Learn from "./features/Learn";
-import Academy from "./features/academy/Academy";
+const Academy = lazy(() => import("./features/academy/Academy"));
 import Library from "./features/Library";
 import { ReminderScheduler, RemindersTool } from "./features/Personal";
 import { useGuestPreferences } from "./hooks/useGuestData";
@@ -67,6 +67,13 @@ function Shell() {
   const [modal, setModal] = useState("");
   const [answer, setAnswer] = useState("");
   const menuButton = useRef<HTMLButtonElement>(null);
+  useEffect(()=>{
+    const header=document.querySelector<HTMLElement>('.header');if(!header)return;
+    const update=()=>document.documentElement.style.setProperty('--navigation-clearance',`${Math.ceil(header.getBoundingClientRect().height+(parseFloat(getComputedStyle(header).top)||0)+16)}px`);
+    const observer=new ResizeObserver(update);observer.observe(header);window.addEventListener("resize",update);update();
+    return()=>{observer.disconnect();window.removeEventListener("resize",update);document.documentElement.style.removeProperty('--navigation-clearance');};
+  },[]);
+
   const { language, theme } = preferences;
   useEffect(() => { setAnswer(""); setModal(""); setToast(""); setMenu(false); }, [auth.user?.uid]);
 
@@ -239,7 +246,7 @@ function Shell() {
           </header>
 
           {menu && (
-            <div className="drawer" id="site-drawer" role="dialog" aria-modal="true" aria-label={t("Main navigation")} onKeyDown={trapFocus}>
+            <div className="drawer-backdrop" onClick={()=>setMenu(false)}><div className="drawer" onClick={e=>e.stopPropagation()} id="site-drawer" role="dialog" aria-modal="true" aria-label={t("Main navigation")} onKeyDown={trapFocus}>
               <div className="row">
                 <strong>{t("Explore your journey")}</strong>
                 <button className="icon-button" id="close-drawer" aria-label={t("Close navigation")} onClick={() => setMenu(false)}>
@@ -269,7 +276,7 @@ function Shell() {
                 {t("Preferences")}
                 <ChevronRight aria-hidden="true" />
               </a>
-            </div>
+            </div></div>
           )}
 
           <main id="main" tabIndex={-1} className={isHome ? "home-main" : "inner-main"}>

@@ -24,7 +24,16 @@
     "verify:backend-catalog": "node scripts/verify-backend-catalog.mjs",
     "verify:academy": "node scripts/verify-academy.mjs",
     "verify:account-learning": "node scripts/verify-account-learning.mjs",
-    "verify:assistant": "node scripts/verify-assistant.mjs"
+    "verify:assistant": "node scripts/verify-assistant.mjs",
+    "verify:images": "node scripts/validate-academy-images.mjs",
+    "verify:mobile-interactions": "node scripts/verify-mobile-interactions.mjs",
+    "verify:refinement": "node scripts/verify-refinement.mjs",
+    "verify:refinement-controls": "node scripts/verify-refinement-controls.mjs",
+    "prebuild": "node scripts/prepare-academy-assets.mjs",
+    "predev": "node scripts/prepare-academy-assets.mjs",
+    "verify:mobile-viewport": "node scripts/verify-mobile-viewport.mjs",
+    "images:report": "node scripts/report-academy-images.mjs",
+    "verify:academy-images": "node scripts/verify-academy-images.mjs"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.9",
@@ -35,7 +44,7 @@
     "i18next": "^27.1.1",
     "lucide-react": "^0.468.0",
     "motion": "^12.0.0",
-    "next": "^16.0.0",
+    "next": "16.4.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-i18next": "^18.0.1",

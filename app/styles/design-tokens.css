@@ -23,12 +23,12 @@
   --bg: #faf8f2;
   --surface: #fffdf8;
   --ink: #14203a;
-  --muted: #6d7180;
+  --muted: #626978;
   --line: #e7e2d8;
   --primary: #15233f;
   --soft: #f3eee3;
   --accent: #b69a65;
-  --accent-ink: #8a6f3c;
+  --accent-ink: #806333;
   --shadow: 0 18px 46px rgba(20, 32, 58, 0.06);
 }
 [data-theme="dark"] {

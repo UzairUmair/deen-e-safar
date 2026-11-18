@@ -1,0 +1,4 @@
+# Responsive verification
+Local Chrome with recorded public API fixtures. Six routes: AI, Academy, Quran, Duas, Preferences, Dashboard; English and Urdu; 320, 360, 390, 430, 768, 1024, 1280, 1440, 1920px. 108 loaded-content checks, zero document horizontal overflow failures. Script waits for screen-specific content; initial skeleton-only run was discarded. Screenshots at 390/1440 in ignored .openai/refinement. Manually inspected AI mobile and Quran desktop.
+
+This measures loaded guest layouts only. Account sign-in gating means authenticated account sections were not covered by this matrix. Physical mobile keyboard, open menu/drawer, history prepend, long generated responses, long Urdu lesson, header collision across scroll positions, contrast audit and all bookmarked/audio interactions remain pending. No claim of WCAG certification.

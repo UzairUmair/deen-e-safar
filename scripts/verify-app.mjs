@@ -187,10 +187,10 @@ await test("prayer times: provider times in the location's zone, live countdown,
 });
 
 await test("prayer countdown rolls over to tomorrow's Fajr after Isha", async () => {
-  const { page, requests, close } = await open("/prayer", { time: "2026-11-10T14:04:57Z" });
+  const { page, requests, close } = await open("/prayer", { time: "2026-11-10T14:04:00Z" });
   await page.waitForSelector("[data-testid=countdown]");
   assert.match(await page.textContent("[data-testid=next-prayer]"), /Isha/);
-  await page.clock.runFor(5000);
+  await page.clock.runFor(65000);
   await page.waitForFunction(() => /Fajr/.test(document.querySelector("[data-testid=next-prayer]")?.textContent ?? ""));
   assert.match(await page.textContent("[data-testid=countdown]"), /^10:21:\d\d$/);
   assert.ok(requests.some((u) => u.includes("/timings/11-11-2026")), "next day's schedule requested");
@@ -298,9 +298,10 @@ await test("language: Urdu switch sets lang/dir, translates the interface, persi
   await close();
 });
 
-await test("assistant: clearly not live, and returns labelled source-search citations only", async () => {
+await test("assistant: conversational entry keeps direct source search separate", async () => {
   const { page, close } = await open("/ai");
-  assert.match(await page.textContent("h1"), /Live answers coming soon/);
+  await page.getByRole("button",{name:/Browse Quran & Hadith sources/}).click();
+  assert.match(await page.textContent("h1"), /Search Quran and Hadith sources/);
   await page.fill("#chat-input", "mercy");
   await page.click(".chat-composer button");
   await page.waitForSelector(".citation-card", { timeout: 30000 });

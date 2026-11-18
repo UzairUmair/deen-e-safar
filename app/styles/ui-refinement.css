@@ -1,0 +1,38 @@
+/* Shared application refinements; homepage artwork and motion remain scoped separately. */
+/* Reserve a viewport while hash routes hydrate or lazy screens load; the footer
+   must not flash above the page and then jump below the arriving content. */
+#main{min-height:100svh}
+.academy-hero-art{height:clamp(220px,28vw,360px);min-height:220px}
+.academy-hero-art picture{height:100%}
+.academy-hero-art img{position:static;min-height:0;height:100%;aspect-ratio:auto}
+:root{--navigation-clearance:112px}html{scroll-padding-top:var(--navigation-clearance)}
+.app-screen :is(section[id],article[id],.panel[id]){scroll-margin-top:var(--navigation-clearance)}
+.app-screen :is(input,select,textarea){min-width:0;max-width:100%;box-sizing:border-box}
+.app-screen .search-field{display:flex;align-items:center;gap:10px;padding:8px 14px;min-width:0}
+.app-screen .search-field input{border:0!important;box-shadow:none;background:transparent;border-radius:0;padding:8px 0;min-width:0;width:100%;font-size:15px}
+.app-screen .search-field svg{flex-shrink:0}.app-screen .chip{min-height:44px;white-space:normal}
+.app-screen .feature-heading{font-size:clamp(30px,3.3vw,44px);line-height:1.25}
+.app-screen .fine-print{font-size:13px;line-height:1.7}
+.surah-tiles{grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}
+.surah-tile{gap:14px;align-items:start;padding:20px;min-width:0;grid-template-columns:42px minmax(0,1fr)}
+.surah-tile-main{min-width:0;overflow-wrap:anywhere}.surah-tile-main strong{font-size:18px}.surah-tile-main small{font-size:13px;line-height:1.7}
+.surah-tile-arabic{grid-column:2;justify-self:start;white-space:normal;font-size:24px;line-height:1.9}
+.dua-card{padding:22px;gap:12px}.dua-card-link h3{font-size:20px;line-height:1.5}.dua-card .dua-arabic{display:block;overflow:visible;font-size:25px;line-height:2.1}
+.dua-excerpt{font-size:15px;line-height:1.8}.dua-card-link small{font-size:13px}
+.account-preferences .city-list{max-height:none;overflow:visible;gap:8px}.account-nav{top:var(--navigation-clearance)}
+.account-card,.account-main>.widget{scroll-margin-top:var(--navigation-clearance)}
+.account-preferences .settings-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}
+.account-center label{font-size:14px}.account-center select{min-height:48px}
+.academy{padding-top:20px!important}.academy-header{margin-bottom:18px;gap:16px}.academy-hero{padding:28px;gap:24px}.academy-hero h1{font-size:clamp(30px,3vw,40px)}
+.academy-hero-art{min-height:0;box-shadow:none}.academy-track>p{font-size:15px;min-height:0}.academy-track{min-width:0}.academy-outline{top:var(--navigation-clearance)}.academy-categories{position:static}.academy-track small{font-size:12px}.academy-lesson-link{font-size:15px}
+.assistant-workspace{gap:12px}.assistant-top{margin-bottom:0;padding-bottom:14px}.assistant-welcome{padding:14px 0 4px}.assistant-welcome h2{font-size:clamp(26px,3vw,34px);margin:12px auto}.assistant-emblem{width:42px;height:42px}.assistant-starters{margin:12px auto;gap:6px}.assistant-composer{margin-top:12px}.assistant-composer textarea{min-height:60px}.assistant-main{position:relative}.assistant-thread{max-height:55vh;max-height:55dvh;overflow:auto;min-height:0;overscroll-behavior:contain;padding-inline:4px;scrollbar-gutter:stable}.assistant-evidence,.assistant-prose{overflow-wrap:anywhere}.assistant-layout.with-history{align-items:start}.assistant-sidebar{max-height:65dvh;overflow:auto}.assistant-note{margin-block:8px}
+@media(max-width:700px){:root{--navigation-clearance:100px}.account-nav{position:static;grid-template-columns:repeat(2,minmax(0,1fr))}.academy-header{align-items:start;flex-direction:column}.academy-settings{width:100%}.academy-settings label{flex:1;min-width:0}.academy-hero{padding:20px}.assistant-thread{max-height:48dvh}.assistant-welcome h2{font-size:27px}.assistant-starters button{min-height:44px}.assistant-top-actions .chip{min-height:44px}.assistant-sidebar{max-height:45dvh}.surah-tile{padding:16px}.dua-card{padding:18px}}
+@media(prefers-reduced-motion:reduce){.assistant-thread{scroll-behavior:auto}}
+.assistant-pending-question{margin:8px 0;padding:12px 18px;background:var(--surface,#fff);border-inline-start:3px solid var(--gold,#b69a65);overflow-wrap:anywhere}
+.drawer-backdrop{position:fixed;inset:0;z-index:80;background:#15233f66}.drawer-backdrop .drawer{z-index:81}.mobile-panel{position:fixed;inset-block:0;inset-inline:0 auto;margin:0;box-sizing:border-box;width:min(88vw,380px);height:100dvh;max-height:100dvh;max-width:100%;border:0;padding:max(20px,env(safe-area-inset-top)) 20px max(24px,env(safe-area-inset-bottom));background:var(--surface,#fff);color:var(--ink,#15233f);overflow:auto;overscroll-behavior:contain}.mobile-panel::backdrop{background:#15233f88}.mobile-panel>header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:24px}.mobile-panel h2{font-size:21px}.mobile-panel label{display:grid;gap:8px;margin:16px 0}.mobile-panel input:not([type=checkbox]){box-sizing:border-box;width:100%;min-width:0;padding:12px;border:1px solid var(--line,#e7e2d8);border-radius:8px;background:transparent;color:inherit}.mobile-panel .assistant-consent{display:flex}.mobile-panel summary{cursor:pointer;margin-bottom:16px}.mobile-panel .assistant-history-item{min-height:44px}.mobile-panel li{line-height:1.8;margin-block:14px}
+/* Leave room for the fixed mobile navigation when the keyboard changes the viewport. */
+@media(max-width:700px){.assistant-composer{scroll-margin-bottom:calc(88px + env(safe-area-inset-bottom));padding-bottom:max(16px,env(safe-area-inset-bottom))}}
+.academy-artwork-unavailable{aspect-ratio:4/3;display:grid;place-items:center;border:1px dashed var(--line,#e7e2d8);background:var(--surface,#fff);border-radius:16px}.academy-artwork-unavailable p{font-size:14px;padding:20px}
+.academy-artwork picture{display:block}.academy-artwork picture[data-loading]{background:linear-gradient(120deg,#eee7d8,#faf8f2,#e7dfcc)}[data-theme=dark] .academy-artwork picture[data-loading]{background:linear-gradient(120deg,#263434,#344442,#263434)}
+.academy-image-gallery{margin-block:14px 24px}.academy-image-gallery>summary{cursor:pointer;font-size:13px;min-height:44px;display:flex;align-items:center;gap:8px;color:var(--muted,#626978)}.academy-image-gallery>div{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:14px}.academy-image-gallery .academy-artwork{border-radius:12px}.academy-image-gallery img{aspect-ratio:4/3!important;max-height:none!important}.academy-preview>.academy-artwork,.academy-preview>div:has(>.academy-artwork){min-width:0}.academy-story-header>.academy-artwork{border-radius:16px}
+@media(max-width:430px){.academy-image-gallery>div{grid-template-columns:1fr}}

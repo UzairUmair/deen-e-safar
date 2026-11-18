@@ -4,9 +4,29 @@
   "installCommand": "npm ci",
   "buildCommand": "npm run build",
   "rewrites": [
-    { "source": "/__/auth/:path*", "destination": "https://deen-e-safar.firebaseapp.com/__/auth/:path*" }
+    {
+      "source": "/__/auth/:path*",
+      "destination": "https://deen-e-safar.firebaseapp.com/__/auth/:path*"
+    }
   ],
   "headers": [
-    { "source": "/__/auth/:path*", "headers": [{ "key": "Cache-Control", "value": "no-store" }] }
+    {
+      "source": "/__/auth/:path*",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        }
+      ]
+    },
+    {
+      "source": "/images/academy/:path*",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
+        }
+      ]
+    }
   ]
 }

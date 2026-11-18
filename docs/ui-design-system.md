@@ -1,0 +1,2 @@
+# UI refinement rules
+Preserve existing cream/navy/gold identity, dark mode tokens, diagonal button animation and homepage 3D. Primary controls minimum 44px. Search inputs have a single surrounding border and visible focus. Body text target 15–17px, metadata 12–14px. Arabic is not clamped in Dua cards. Flexible grid children use min-width:0; long references wrap. Utility layouts use shared navigation clearance. This is an incremental refinement layer, imported after existing screen styles.

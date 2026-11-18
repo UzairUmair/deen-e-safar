@@ -1,0 +1,4 @@
+# Chat layout implementation
+Compact welcome, bounded thread (55dvh desktop / 48dvh mobile), composer outside the scroll area. User's pending question appears during loading. Latest responses scroll only if the reader remains near the bottom; Jump to latest is available otherwise. History prepends compensate scrollHeight difference. Mobile history uses a native modal drawer with explicit focus cycling, Escape, backdrop dismissal, body lock and trigger restoration. Desktop history remains optional, preserving the simpler entry screen.
+
+Local browser coverage includes authenticated CRUD and 50-paragraph fixture rendering, citations, latest scrolling and 503 recovery. The server returns validated complete JSON, so no token streaming exists. Physical mobile keyboard behavior and standalone prepend stress testing remain unverified. Groq API contracts unchanged.

@@ -1,0 +1,164 @@
+{
+  "temporal": [
+    {
+      "t": 6459.1,
+      "frame": 3,
+      "p": 0,
+      "target": 0,
+      "open": 0,
+      "calls": 1,
+      "triangles": 2,
+      "geometries": 38,
+      "textures": 35,
+      "night": 0
+    },
+    {
+      "t": 8075.6,
+      "frame": 4,
+      "p": 0.11509632601410957,
+      "target": 0.2,
+      "open": 0,
+      "calls": 74,
+      "triangles": 2674,
+      "geometries": 38,
+      "textures": 35,
+      "night": 0
+    },
+    {
+      "t": 8092.2,
+      "frame": 5,
+      "p": 0.8,
+      "target": 0.8,
+      "open": 1,
+      "calls": 129,
+      "triangles": 4016,
+      "geometries": 56,
+      "textures": 35,
+      "night": 1
+    },
+    {
+      "t": 8292.2,
+      "frame": 5,
+      "p": 0.8,
+      "target": 0.8,
+      "open": 1,
+      "calls": 129,
+      "triangles": 4016,
+      "geometries": 56,
+      "textures": 35,
+      "night": 1
+    },
+    {
+      "t": 8308.9,
+      "frame": 5,
+      "p": 0.8,
+      "target": 0.8,
+      "open": 1,
+      "calls": 129,
+      "triangles": 4016,
+      "geometries": 56,
+      "textures": 35,
+      "night": 1
+    },
+    {
+      "t": 8742.1,
+      "frame": 6,
+      "p": 0.49372994705964107,
+      "target": 0.45,
+      "open": 0.6918926680701468,
+      "calls": 69,
+      "triangles": 1450,
+      "geometries": 59,
+      "textures": 35,
+      "night": 0.5686
+    },
+    {
+      "t": 8758.8,
+      "frame": 7,
+      "p": 0.008981695755583552,
+      "target": 0,
+      "open": 0,
+      "calls": 69,
+      "triangles": 1450,
+      "geometries": 59,
+      "textures": 35,
+      "night": 0
+    },
+    {
+      "t": 9042.1,
+      "frame": 8,
+      "p": 0.007556353265458272,
+      "target": 0,
+      "open": 0,
+      "calls": 73,
+      "triangles": 2662,
+      "geometries": 59,
+      "textures": 35,
+      "night": 0
+    }
+  ],
+  "renderer": {
+    "frame": 41,
+    "p": 0.4343371410529421,
+    "target": 0.43364928909952605,
+    "open": 0.4797755037605075,
+    "calls": 34,
+    "triangles": 518,
+    "geometries": 57,
+    "textures": 35
+  },
+  "reloadBefore": {
+    "y": 1553,
+    "state": {
+      "__NA": true,
+      "__PRIVATE_NEXTJS_INTERNALS_TREE": {
+        "tree": [
+          "",
+          {
+            "children": [
+              "__PAGE__",
+              {},
+              null,
+              null,
+              512,
+              ""
+            ]
+          },
+          null,
+          null,
+          528
+        ],
+        "renderedSearch": ""
+      },
+      "deenEntry": "deen-1794315300745-n1u7yrht5kr"
+    },
+    "saved": "1553"
+  },
+  "reloadAfter": {
+    "y": 1553,
+    "state": {
+      "__NA": true,
+      "__PRIVATE_NEXTJS_INTERNALS_TREE": {
+        "tree": [
+          "",
+          {
+            "children": [
+              "__PAGE__",
+              {},
+              null,
+              null,
+              512,
+              ""
+            ]
+          },
+          null,
+          null,
+          528
+        ],
+        "renderedSearch": ""
+      },
+      "deenEntry": "deen-1794315300745-n1u7yrht5kr"
+    },
+    "saved": "1553"
+  }
+}

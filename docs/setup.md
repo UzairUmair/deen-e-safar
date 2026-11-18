@@ -25,7 +25,9 @@ For optional generation, configure a newly rotated GROQ_API_KEY and a currently
 supported GROQ_MODEL. GROQ_RESPONSE_FORMAT=json_object is the default; select
 json_schema only for a model supporting strict structured output. Leave Groq
 empty to keep account features available without generated answers. Credentials
-previously pasted into chat were not used and must not be reused.
+previously pasted into chat require rotation before release. An authorized real
+Groq transport smoke test was performed during final QA. On 2026-11-18 the user
+confirmed that the shared credentials were not yet rotated. Never copy them into source.
 
 In Firebase Console, enable Email/Password and Google in Authentication → Sign-in
 method; set the Google support email and authorized frontend domains. Configure

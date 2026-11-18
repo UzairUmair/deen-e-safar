@@ -418,7 +418,7 @@ html[lang="ar"] .home {
 .surah-preview-number {
   font: 700 11px/1 "Plus Jakarta Sans", sans-serif;
   letter-spacing: 0.14em;
-  color: #8a6f3c;
+  color: #806333;
 }
 .surah-preview-arabic {
   font-family: "Amiri Quran", "Noto Naskh Arabic", serif;
@@ -433,7 +433,7 @@ html[lang="ar"] .home {
 .surah-preview small {
   font-size: 11.5px;
   line-height: 1.45;
-  color: #6d7180;
+  color: #626978;
 }
 /* Hidden until the scroll timeline reveals them (inline styles from GSAP take over). */
 .story:not([data-mode="static"]) :is(.guide-copy, .surah-preview) {
@@ -702,7 +702,7 @@ html[lang="ar"] .home {
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #6d7180 !important;
+  color: #626978 !important;
 }
 .source-card {
   display: flex;
@@ -726,7 +726,7 @@ html[lang="ar"] .home {
 }
 .source-card small {
   font-size: 11px;
-  color: #6d7180;
+  color: #626978;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -735,7 +735,7 @@ html[lang="ar"] .home {
 .chat-note {
   margin-top: 4px !important;
   font-size: 10.5px;
-  color: #6d7180 !important;
+  color: #626978 !important;
   text-align: center;
 }
 
